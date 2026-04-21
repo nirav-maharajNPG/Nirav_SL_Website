@@ -138,10 +138,7 @@
                         <i class="fas fa-bolt"></i>
                         <span class="amenity-label">Backup generator</span>
                     </div>
-                    <div class="amenity-item">
-                        <i class="fas fa-handshake"></i>
-                        <span class="amenity-label">Meeting boardrooms</span>
-                    </div>
+
                     <div class="amenity-item">
                         <i class="fas fa-utensils"></i>
                         <span class="amenity-label">Serviced communal kitchen</span>
@@ -167,44 +164,7 @@
             <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d6025.61044361286!2d28.074970039742798!3d-26.103834131405904!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1e9573b3595dca3b%3A0xd21f3829b70bf0d6!2sDynamic%20Workspaces%20Wynberg%20Sandton!5e0!3m2!1sen!2sza!4v1775741908985!5m2!1sen!2sza" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
         </section>
 
-        <!-- Meetings Section -->
-        <section class="section" id="meetings">
-            <div class="container">
-                <div class="section-header" style="text-align: center; margin-bottom: 4rem;">
-                    <span class="section-tag text-uppercase">Reservations</span>
-                    <h2 class="section-title" style="margin: 0 auto;">Meeting & Boardroom</h2>
-                    <p style="max-width: 700px; margin: 1.5rem auto; font-size: 1.25rem; font-weight: 500;">Premium professionally equipped spaces from <span style="color: var(--primary-blue); font-weight: 700;">R250 per hour</span>.</p>
-                    <p style="max-width: 700px; margin: 0 auto; color: var(--dark-grey);">Available for client meetings, team workshops, or presentations on a first-come-first-served basis.</p>
-                    <p class="vat-text">*Excluding VAT</p>
-                </div>
-                
-                <div class="gallery-wrapper" style="margin-bottom: 4rem;">
-                    <div class="gallery-container" style="height: 600px;">
-                        <div class="gallery-track" id="meetingTrack">
-                            <div class="gallery-slide">
-                                <img src="assets/chawick meeting rooms/Bagatelle.jpg" alt="Bagatelle Meeting Room" loading="lazy" loading="lazy">
-                                <div style="position: absolute; bottom: 20px; left: 20px; background: rgba(0,0,0,0.7); color: white; padding: 10px 20px; border-radius: 8px; font-weight: 600;">Bagatelle</div>
-                            </div>
-                            <div class="gallery-slide">
-                                <img src="assets/chawick meeting rooms/Shezi.jpg" alt="Shezi Meeting Room" loading="lazy" loading="lazy">
-                                <div style="position: absolute; bottom: 20px; left: 20px; background: rgba(0,0,0,0.7); color: white; padding: 10px 20px; border-radius: 8px; font-weight: 600;">Shezi</div>
-                            </div>
-                            <div class="gallery-slide">
-                                <img src="assets/chawick meeting rooms/Thora.jpg" alt="Thora Meeting Room" loading="lazy" loading="lazy">
-                                <div style="position: absolute; bottom: 20px; left: 20px; background: rgba(0,0,0,0.7); color: white; padding: 10px 20px; border-radius: 8px; font-weight: 600;">Thora</div>
-                            </div>
-                        </div>
-                        <button class="gallery-btn prev" id="meetingPrev"><i class="fas fa-chevron-left"></i></button>
-                        <button class="gallery-btn next" id="meetingNext"><i class="fas fa-chevron-right"></i></button>
-                        <div class="gallery-counter" id="meetingCounter">1 / 3</div>
-                    </div>
-                </div>
 
-                <div style="text-align: center;">
-                    <a href="contact.html" class="btn btn-primary" style="padding: 1.2rem 4rem; font-size: 1.1rem;">Book a Room</a>
-                </div>
-            </div>
-        </section>
 
         <!-- Atrium Section -->
         <section class="section" id="atrium" style="background-color: var(--light-grey);">
@@ -570,47 +530,7 @@
             }
         })();
 
-        // Meeting Room Gallery
-        (function() {
-            const track = document.getElementById('meetingTrack');
-            const prevBtn = document.getElementById('meetingPrev');
-            const nextBtn = document.getElementById('meetingNext');
-            const counter = document.getElementById('meetingCounter');
-            const slides = Array.from(track.children);
-            
-            let currentIndex = 0;
-            const totalSlides = slides.length;
 
-            function updateGallery() {
-                track.style.transform = `translateX(-${currentIndex * 100}%)`;
-                counter.textContent = `${currentIndex + 1} / ${totalSlides}`;
-            }
-
-            nextBtn.addEventListener('click', () => {
-                currentIndex = (currentIndex + 1) % totalSlides;
-                updateGallery();
-            });
-
-            prevBtn.addEventListener('click', () => {
-                currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
-                updateGallery();
-            });
-
-            let autoPlay = setInterval(() => {
-                currentIndex = (currentIndex + 1) % totalSlides;
-                updateGallery();
-            }, 5500);
-
-            [prevBtn, nextBtn].forEach(btn => {
-                btn.addEventListener('mouseenter', () => clearInterval(autoPlay));
-                btn.addEventListener('mouseleave', () => {
-                    autoPlay = setInterval(() => {
-                        currentIndex = (currentIndex + 1) % totalSlides;
-                        updateGallery();
-                    }, 5500);
-                });
-            });
-        })();
 
         // Storage Gallery
         (function() {

@@ -149,11 +149,15 @@ button, input, select, textarea {
 
 .navbar.scrolled {
     padding: 0.5rem 5%; /* Shrink on scroll */
-    background: rgba(255, 255, 255, 0.98); /* Solid white or near-solid on scroll */
+    background: #ffffff !important; /* Solid white to avoid overlay transparency issues */
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
-    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    border-bottom: 2px solid var(--primary-blue);
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08); /* Sophisticated drop shadow */
+}
+
+.navbar.scrolled .nav-logo img {
+    height: 60px; /* Further reduce logo size on scroll to avoid overlapping text */
 }
 
 /* Subtle gloss reflection only when scrolled */
@@ -246,7 +250,7 @@ button, input, select, textarea {
 .split-hero, .angled-split-hero {
     display: grid;
     grid-template-columns: 50% 50%; /* Revert to 50% to make the picture less "big" */
-    min-height: 480px; /* Force a shorter height so the image naturally zooms out more horizontally */
+    min-height: 420px; /* Reduced to avoid excessive zoom and blurry appearance */
     width: 100% !important;
     background-color: #ffffff;
     align-items: stretch;
@@ -723,8 +727,13 @@ button, input, select, textarea {
 }
 
 .location-name {
-    font-size: 2rem;
+    font-size: 1.8rem; /* Slightly smaller to fit longer names */
     margin-bottom: 1rem;
+    line-height: 1.2;
+}
+
+.location-name.long-name {
+    font-size: 1.35rem; /* Specifically for "Johannesburg CBD" to stay on one line or look straighten */
 }
 
 .location-link {
