@@ -15,7 +15,7 @@
       "url": "https://www.rentapilot.co.za/DWS/chadwick-wynberg.html",
       "address": {
         "@type": "PostalAddress",
-        "streetAddress": "1 Chadwick Avenue",
+        "streetAddress": "22 5th St",
         "addressLocality": "Wynberg",
         "addressRegion": "Sandton",
         "postalCode": "2090",
@@ -61,8 +61,6 @@
             <a href="contact.html" class="btn btn-primary">Find Storage Nearby</a>
         </div>
     </nav>
-        </div>
-    </nav>
 
     <main>
         <section class="angled-split-hero">
@@ -82,37 +80,33 @@
             </div>
         </section>
 
-        <!-- Pricing Section -->
-        <section class="section" id="pricing" style="background-color: var(--white);">
+        <!-- Price Calculator Section -->
+        <section class="section" id="calculator" style="background-color: var(--white);">
             <div class="container">
                 <div class="section-header" style="text-align: center; margin-bottom: 3rem;">
-                    <span class="section-tag text-uppercase">Memberships</span>
-                    <h2 class="section-title" style="margin: 0 auto;">Pricing Preview</h2>
+                    <span class="section-tag text-uppercase">Pricing</span>
+                    <h2 class="section-title" style="margin: 0 auto;">Price Calculator</h2>
+                    <p style="margin-top: 1rem; color: var(--dark-grey);">Calculate your monthly storage cost based on unit size (R118.25 per m²).</p>
                 </div>
-                <div class="pricing-grid" style="display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap; align-items: stretch;">
-                    <div class="pricing-card" style="flex: 1; min-width: 300px; max-width: 400px; display: flex; flex-direction: column; text-align: center;">
-                        <h3 class="service-title">Co-Working</h3>
-                        <p>Flexible hot-desks in a vibrant community.</p>
-                        <div class="pricing-label">starting from</div>
-                        <div class="pricing-price">R1200<span> / month</span></div>
-                        <div class="pricing-vat">Excluding VAT</div>
-                        <a href="coworking.html" class="btn btn-outline">VIEW</a>
+                
+                <div style="max-width: 600px; margin: 0 auto; background: var(--light-grey); padding: 3rem; border-radius: 20px; box-shadow: var(--shadow);">
+                    <div style="margin-bottom: 2.5rem;">
+                        <label for="sizeInput" style="display: block; margin-bottom: 1rem; font-weight: 600; color: var(--black);">Enter Size (m²):</label>
+                        <div style="position: relative;">
+                            <input type="number" id="sizeInput" min="3" max="142" value="3" style="width: 100%; padding: 1.2rem; border-radius: 12px; border: 2px solid #ddd; font-size: 1.2rem; outline: none; transition: border-color 0.3s;" oninput="calculatePrice()">
+                            <span style="position: absolute; right: 20px; top: 50%; transform: translateY(-50%); color: var(--dark-grey); font-weight: 500;">m²</span>
+                        </div>
+                        <p style="margin-top: 0.8rem; font-size: 0.9rem; color: var(--dark-grey);">Range: 3m² to 142m²</p>
                     </div>
-                    <div class="pricing-card" style="flex: 1; min-width: 300px; max-width: 400px; display: flex; flex-direction: column; text-align: center;">
-                        <h3 class="service-title">Virtual Office</h3>
-                        <p>Professional business address & mail handling.</p>
-                        <div class="pricing-label">starting from</div>
-                        <div class="pricing-price">R599,99<span> / month</span></div>
-                        <div class="pricing-vat">Excluding VAT</div>
-                        <a href="virtual-office.html" class="btn btn-outline">VIEW</a>
+                    
+                    <div style="background: var(--white); padding: 2rem; border-radius: 12px; text-align: center;">
+                        <p style="font-size: 1rem; color: var(--dark-grey); margin-bottom: 0.5rem;">Estimated Monthly Price:</p>
+                        <div style="font-size: 2.5rem; font-weight: 800; color: var(--primary-blue); margin-bottom: 0.5rem;" id="calcResult">R354.75</div>
+                        <p class="vat-text" style="font-size: 0.9rem;">*Excluding VAT</p>
                     </div>
-                    <div class="pricing-card" style="flex: 1; min-width: 300px; max-width: 400px; display: flex; flex-direction: column; text-align: center;">
-                        <h3 class="service-title">Private Office Suites</h3>
-                        <p>Fully furnished secure office suites for teams.</p>
-                        <div class="pricing-label">starting from</div>
-                        <div class="pricing-price">R2040.00<span> / month</span></div>
-                        <div class="pricing-vat">Excluding VAT</div>
-                        <a href="private-offices.html" class="btn btn-outline">VIEW</a>
+
+                    <div style="margin-top: 2.5rem; text-align: center;">
+                        <a href="contact.html" class="btn btn-primary" style="width: 100%;">Book This Unit</a>
                     </div>
                 </div>
             </div>
@@ -184,36 +178,45 @@
             </div>
         </section>
 
-        <!-- Storage Section -->
-        <section class="section" id="storage">
-            <div class="container split-layout" style="flex-direction: row-reverse;">
-                <div style="flex: 1;">
-                    <span class="section-tag text-uppercase">Secure Storage</span>
-                    <h2 class="section-title">We offer storage solutions</h2>
-                    <p style="margin: 2rem 0; color: var(--dark-grey); line-height: 1.8;">Secure, conveniently located storage units tailored for your personal or business needs. Whether you need to store office equipment or personal belongings, we have the space for you.</p>
-                    
-                    <ul style="list-style: none; margin-bottom: 3rem;">
-                        <li style="margin-bottom: 1.5rem; display: flex; align-items: center; gap: 1rem;">
-                            <i class="fas fa-layer-group" style="color: var(--primary-blue);"></i> <strong>Sizes:</strong> 2m² to 18m²
-                        </li>
-                        <li style="margin-bottom: 1.5rem; display: flex; align-items: center; gap: 1rem;">
-                            <i class="fas fa-tag" style="color: var(--primary-blue);"></i> <strong>Price:</strong> Starting from R445 per month
-                        </li>
-                        <li style="margin-bottom: 1.5rem; display: flex; align-items: center; gap: 1rem;">
-                            <i class="fas fa-shield-alt" style="color: var(--primary-blue);"></i> <strong>Condition:</strong> Secure & Accessible
-                        </li>
-                    </ul>
-                    <a href="contact.html" class="btn btn-primary">Book Storage</a>
-                    <p class="vat-text">*Excluding VAT</p>
+        <!-- Storage Solutions Section -->
+        <section class="section" id="storage-solutions">
+            <div class="container">
+                <div class="section-header" style="text-align: center; margin-bottom: 4rem;">
+                    <span class="section-tag text-uppercase">Wynberg self-storage locker units</span>
+                    <h2 class="section-title" style="margin: 0 auto;">Storage Solutions with Storage Locker</h2>
+                    <p style="margin-top: 1.5rem; color: var(--primary-blue); font-weight: 600; font-size: 1.1rem;">Wynberg, 22 5th St, Wynberg, Sandton, 2090</p>
                 </div>
-                <div class="gallery-wrapper" style="flex: 1; height: 600px;">
-                    <div class="gallery-container" style="height: 100%; border-radius: 16px;">
-                        <div class="gallery-track" id="storageTrack">
-                            <div class="gallery-slide"><img src="assets/chadwick storage/366f2353-4848-4932-a8ac-050d62b6eb5a_primary.jpg" alt="Chadwick Storage 1" loading="lazy" loading="lazy"></div>
-                            <div class="gallery-slide"><img src="assets/chadwick storage/7fcd7911-2ae9-458c-aaf3-fc54888e2783_primary.jpg" alt="Chadwick Storage 2" loading="lazy" loading="lazy"></div>
+                
+                <div class="split-layout" style="gap: 4rem; align-items: flex-start;">
+                    <div style="flex: 1.2;">
+                        <h3 style="font-size: 1.8rem; margin-bottom: 1.5rem; color: var(--black); font-family: 'Playfair Display', serif;">From 3m² up to 142m²</h3>
+                        <p style="margin-bottom: 2.5rem; color: var(--dark-grey); line-height: 1.8; font-size: 1.1rem;">Our warehouse in Wynberg offers secure storage spaces with up-to-date security measures, ensuring the safety of your goods.</p>
+                        
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;">
+                            <div style="display: flex; align-items: center; gap: 0.8rem; font-weight: 500;"><i class="fas fa-check-circle" style="color: var(--primary-blue);"></i> <span>Flexible options</span></div>
+                            <div style="display: flex; align-items: center; gap: 0.8rem; font-weight: 500;"><i class="fas fa-check-circle" style="color: var(--primary-blue);"></i> <span>Convenient times</span></div>
+                            <div style="display: flex; align-items: center; gap: 0.8rem; font-weight: 500;"><i class="fas fa-check-circle" style="color: var(--primary-blue);"></i> <span>24/7 CCTV and Security</span></div>
+                            <div style="display: flex; align-items: center; gap: 0.8rem; font-weight: 500;"><i class="fas fa-check-circle" style="color: var(--primary-blue);"></i> <span>Boomed-off</span></div>
+                            <div style="display: flex; align-items: center; gap: 0.8rem; font-weight: 500;"><i class="fas fa-check-circle" style="color: var(--primary-blue);"></i> <span>Loading Bay</span></div>
+                            <div style="display: flex; align-items: center; gap: 0.8rem; font-weight: 500;"><i class="fas fa-check-circle" style="color: var(--primary-blue);"></i> <span>Assistance</span></div>
+                            <div style="display: flex; align-items: center; gap: 0.8rem; font-weight: 500;"><i class="fas fa-check-circle" style="color: var(--primary-blue);"></i> <span>Reception</span></div>
                         </div>
-                        <button class="gallery-btn prev" id="storagePrev" style="width: 40px; height: 40px;"><i class="fas fa-chevron-left"></i></button>
-                        <button class="gallery-btn next" id="storageNext" style="width: 40px; height: 40px;"><i class="fas fa-chevron-right"></i></button>
+                    </div>
+                    
+                    <div style="flex: 0.8; background: var(--white); padding: 3rem; border-radius: 16px; box-shadow: var(--shadow); border-top: 4px solid var(--primary-blue);">
+                        <h3 style="font-size: 1.4rem; margin-bottom: 2rem; color: var(--black); font-family: 'Playfair Display', serif;">Access Hours</h3>
+                        <div style="margin-bottom: 1.5rem; padding-bottom: 1rem; border-bottom: 1px solid #eee;">
+                            <p style="font-weight: 700; color: var(--primary-blue); margin-bottom: 0.3rem; text-transform: uppercase; font-size: 0.85rem;">Monday – Friday</p>
+                            <p style="color: var(--dark-grey); font-size: 1.1rem;">08:00 – 17:00</p>
+                        </div>
+                        <div style="margin-bottom: 1.5rem; padding-bottom: 1rem; border-bottom: 1px solid #eee;">
+                            <p style="font-weight: 700; color: var(--primary-blue); margin-bottom: 0.3rem; text-transform: uppercase; font-size: 0.85rem;">Weekends</p>
+                            <p style="color: var(--dark-grey); font-size: 1.1rem;">Special arrangement</p>
+                        </div>
+                        <div>
+                            <p style="font-weight: 700; color: var(--primary-blue); margin-bottom: 0.3rem; text-transform: uppercase; font-size: 0.85rem;">Public Holidays</p>
+                            <p style="color: var(--dark-grey); font-size: 1.1rem;">Closed</p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -377,7 +380,7 @@
                     <p class="footer-desc">Rent self storage in your area designed for your ever-changing requirements of individuals and businesses alike.</p>
                     <div class="footer-contact">
                         <div class="footer-contact-item">
-                            <i class="fas fa-map-marker-alt"></i> 1 Chadwick Avenue, Wynberg, Sandton, 2090
+                            <i class="fas fa-map-marker-alt"></i> 22 5th St, Wynberg, Sandton, 2090
                         </div>
                         <div class="footer-contact-item">
                             <i class="fas fa-phone"></i> 011 052 1800
@@ -561,6 +564,28 @@
                 updateGallery();
             }, 6500);
         })();
+        // Price Calculator Logic
+        function calculatePrice() {
+            const size = document.getElementById('sizeInput').value;
+            const result = document.getElementById('calcResult');
+            const rate = 118.25;
+            
+            if (size >= 3 && size <= 142) {
+                const price = (size * rate).toLocaleString('en-ZA', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+                result.textContent = 'R' + price;
+                result.style.color = 'var(--primary-blue)';
+            } else if (size < 3) {
+                result.textContent = 'Min size: 3m²';
+                result.style.color = '#ef4444';
+            } else if (size > 142) {
+                result.textContent = 'Max size: 142m²';
+                result.style.color = '#ef4444';
+            } else if (size === "" || size === null) {
+                result.textContent = 'R0.00';
+                result.style.color = 'var(--primary-blue)';
+            }
+        }
+        window.addEventListener('load', calculatePrice);
     </script>
     <a href="https://wa.me/27792105562?text=Hi,%20I%20am%20interested%20in%20your%20workspaces." class="whatsapp-float-btn" target="_blank" title="Chat with us"><i class="fab fa-whatsapp"></i></a>
 </body>
