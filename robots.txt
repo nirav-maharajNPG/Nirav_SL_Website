@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://www.rentapilot.co.za/DWS/sitemap.xml
+Sitemap: https://www.storagelocker.co.za/sitemap.xml

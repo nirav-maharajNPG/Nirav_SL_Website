@@ -1,4 +1,4 @@
-// Premium Interactivity for Dynamic Workspaces
+// Premium Interactivity for Storage Locker
 
 document.addEventListener('DOMContentLoaded', () => {
     const navbar = document.getElementById('navbar');

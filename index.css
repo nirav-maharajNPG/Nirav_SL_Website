@@ -666,7 +666,7 @@ button, input, select, textarea {
 /* Cards Grid */
 .card-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr); /* Force 3 columns on desktop for a single row */
+    grid-template-columns: repeat(4, 1fr); /* Force 4 columns on desktop for a single row */
     gap: 3rem;
 }
 
@@ -684,7 +684,7 @@ button, input, select, textarea {
 
 .location-card {
     position: relative;
-    height: 550px;
+    height: 450px;
     overflow: hidden;
     cursor: pointer;
 }

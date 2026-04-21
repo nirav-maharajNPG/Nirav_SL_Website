@@ -1,33 +1,43 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://www.rentapilot.co.za/DWS/index.html</loc>
-    <lastmod>2026-04-16</lastmod>
+    <loc>https://www.storagelocker.co.za/index.html</loc>
+    <lastmod>2026-10-15</lastmod>
     <priority>1.00</priority>
   </url>
   <url>
-    <loc>https://www.rentapilot.co.za/DWS/locations.html</loc>
-    <lastmod>2026-04-16</lastmod>
+    <loc>https://www.storagelocker.co.za/about.html</loc>
+    <lastmod>2026-10-15</lastmod>
     <priority>0.80</priority>
   </url>
   <url>
-    <loc>https://www.rentapilot.co.za/DWS/sandton-morningside.html</loc>
-    <lastmod>2026-04-16</lastmod>
+    <loc>https://www.storagelocker.co.za/locations.html</loc>
+    <lastmod>2026-10-15</lastmod>
     <priority>0.80</priority>
   </url>
   <url>
-    <loc>https://www.rentapilot.co.za/DWS/chadwick-wynberg.html</loc>
-    <lastmod>2026-04-16</lastmod>
+    <loc>https://www.storagelocker.co.za/wynberg.html</loc>
+    <lastmod>2026-10-15</lastmod>
     <priority>0.80</priority>
   </url>
   <url>
-    <loc>https://www.rentapilot.co.za/DWS/village-jhb.html</loc>
-    <lastmod>2026-04-16</lastmod>
+    <loc>https://www.storagelocker.co.za/sandton.html</loc>
+    <lastmod>2026-10-15</lastmod>
     <priority>0.80</priority>
   </url>
   <url>
-    <loc>https://www.rentapilot.co.za/DWS/offerings.html</loc>
-    <lastmod>2026-04-16</lastmod>
-    <priority>0.70</priority>
+    <loc>https://www.storagelocker.co.za/johannesburg-cbd.html</loc>
+    <lastmod>2026-10-15</lastmod>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://www.storagelocker.co.za/vereeniging.html</loc>
+    <lastmod>2026-10-15</lastmod>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://www.storagelocker.co.za/contact.html</loc>
+    <lastmod>2026-10-15</lastmod>
+    <priority>0.80</priority>
   </url>
 </urlset>
