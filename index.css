@@ -1311,13 +1311,16 @@ button, input, select, textarea {
 
 /* Amenities Grid */
 .amenities-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
     gap: 2rem;
     margin-top: 4rem;
 }
 
 .amenity-item {
+    flex: 0 1 calc(25% - 2rem);
+    min-width: 250px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -1758,8 +1761,8 @@ button, input, select, textarea {
         text-align: left;
     }
 
-    .amenities-grid {
-        grid-template-columns: repeat(2, 1fr) !important;
+    .amenity-item {
+        flex: 0 1 calc(50% - 2rem);
     }
 
     .pricing-grid {
@@ -1823,8 +1826,8 @@ button, input, select, textarea {
 }
 
 @media (max-width: 576px) {
-    .amenities-grid {
-        grid-template-columns: 1fr !important;
+    .amenity-item {
+        flex: 0 1 100% !important;
     }
 }
 
