@@ -709,6 +709,7 @@ button, input, select, textarea {
     padding: 3rem;
     background: linear-gradient(transparent, rgba(0,0,0,0.8));
     color: var(--white);
+    text-align: center;
     transition: var(--transition);
 }
 
@@ -733,6 +734,7 @@ button, input, select, textarea {
     color: var(--white);
     display: flex;
     align-items: center;
+    justify-content: center;
     gap: 1rem;
     opacity: 0;
     transform: translateY(10px);
