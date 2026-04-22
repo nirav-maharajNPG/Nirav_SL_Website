@@ -172,7 +172,7 @@
                 <div class="section-header" style="text-align: center; margin-bottom: 3rem;">
                     <span class="section-tag text-uppercase">Size Guide</span>
                     <h2 class="section-title" style="margin: 0 auto;">Find Your Perfect Unit Size</h2>
-                    <p style="margin-top: 1rem; color: var(--dark-grey); max-width: 560px; margin-left: auto; margin-right: auto;">Not sure how much space you need? Select a category, pick a size, and see exactly what fits.</p>
+                    <p style="margin-top: 1rem; color: var(--dark-grey); max-width: 560px; margin-left: auto; margin-right: auto;">Select a category and size to see a 3D preview of what fits and the exact floor dimensions.</p>
                 </div>
 
                 <!-- Category Buttons -->
@@ -195,117 +195,138 @@
                 <div id="sf-chips" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 0.6rem; margin-bottom: 2.5rem;"></div>
 
                 <!-- Result Card -->
-                <div id="sf-result" style="display: none; max-width: 900px; margin: 0 auto; background: white; border-radius: 24px; box-shadow: 0 20px 60px rgba(0,100,255,0.1); overflow: hidden;">
-                    <div style="display: grid; grid-template-columns: 1.2fr 1fr; gap: 0;">
-                        <!-- Visualizer Column -->
-                        <div style="background: #f8faff; padding: 2rem; border-right: 1px solid #eef2ff;">
-                            <!-- 3D Preview -->
-                            <div style="margin-bottom: 2rem; text-align: center;">
-                                <span style="display: block; font-size: 0.75rem; font-weight: 700; color: var(--primary-blue); text-uppercase; letter-spacing: 1px; margin-bottom: 0.8rem;">3D Space Preview</span>
-                                <div style="position: relative; border-radius: 16px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.1); background: #eee;">
-                                    <img id="sf-3d-image" src="" alt="3D Storage Unit" style="width: 100%; height: auto; display: block; transition: opacity 0.3s ease;">
+                <div id="sf-result" style="display: none; max-width: 960px; margin: 0 auto; background: white; border-radius: 32px; box-shadow: 0 30px 80px rgba(0,80,255,0.15); overflow: hidden;">
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0;">
+                        <!-- 3D Visualizer with HUD Overlays -->
+                        <div style="background: #0f172a; position: relative; display: flex; align-items: center; justify-content: center; overflow: hidden; border-right: 1px solid rgba(255,255,255,0.1);">
+                            <!-- 3D Base Image -->
+                            <img id="sf-3d-image" src="" alt="3D Storage Unit" style="width: 100%; height: 100%; object-fit: cover; opacity: 0.8; transition: opacity 0.4s ease;">
+                            
+                            <!-- HUD Overlays (Absolute) -->
+                            <div style="position: absolute; inset: 0; pointer-events: none; padding: 2rem; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+                                <!-- Area Label (Center) -->
+                                <div style="background: rgba(255,255,255,0.1); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,0.2); border-radius: 20px; padding: 1.5rem 2.5rem; text-align: center; color: white; box-shadow: 0 10px 40px rgba(0,0,0,0.3); animation: sfPop 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);">
+                                    <div id="sf-hud-area" style="font-size: 2.5rem; font-weight: 900; line-height: 1; margin-bottom: 0.2rem;"></div>
+                                    <div style="font-size: 0.85rem; font-weight: 600; opacity: 0.8; text-uppercase; letter-spacing: 2px;">Total Area</div>
+                                </div>
+
+                                <!-- Length Label (Top HUD) -->
+                                <div style="position: absolute; top: 15%; width: 60%; display: flex; align-items: center; gap: 1rem; color: white;">
+                                    <div style="flex: 1; height: 2px; background: linear-gradient(to right, transparent, rgba(255,255,255,0.5));"></div>
+                                    <span id="sf-hud-len" style="font-family: monospace; font-size: 1.1rem; font-weight: 700; white-space: nowrap;"></span>
+                                    <div style="flex: 1; height: 2px; background: linear-gradient(to left, transparent, rgba(255,255,255,0.5));"></div>
+                                </div>
+
+                                <!-- Width Label (Side HUD) -->
+                                <div style="position: absolute; left: 10%; height: 40%; display: flex; flex-direction: column; align-items: center; gap: 1rem; color: white;">
+                                    <div style="flex: 1; width: 2px; background: linear-gradient(to bottom, transparent, rgba(255,255,255,0.5));"></div>
+                                    <span id="sf-hud-wid" style="font-family: monospace; font-size: 1.1rem; font-weight: 700; transform: rotate(-90deg); white-space: nowrap;"></span>
+                                    <div style="flex: 1; width: 2px; background: linear-gradient(to top, transparent, rgba(255,255,255,0.5));"></div>
                                 </div>
                             </div>
-                            <!-- 2D Floor Plan -->
-                            <div style="text-align: center;">
-                                <span style="display: block; font-size: 0.75rem; font-weight: 700; color: var(--dark-grey); text-uppercase; letter-spacing: 1px; margin-bottom: 0.8rem;">Technical Floor Plan</span>
-                                <div style="background: white; padding: 1rem; border-radius: 12px; border: 1px solid #eef2ff;">
-                                    <div id="sf-svg-title" style="font-size: 1.2rem; font-weight: 800; color: var(--primary-blue); margin-bottom: 0.1rem;"></div>
-                                    <div id="sf-svg-dims" style="font-size: 0.8rem; color: var(--dark-grey); margin-bottom: 1rem;"></div>
-                                    <svg id="sf-svg" viewBox="0 0 280 200" width="100%" style="max-width: 240px; margin: 0 auto; display: block;"></svg>
-                                </div>
+
+                            <!-- "Realistic Preview" Badge -->
+                            <div style="position: absolute; bottom: 1.5rem; right: 1.5rem; background: rgba(0,0,0,0.5); color: white; padding: 0.5rem 1rem; border-radius: 50px; font-size: 0.7rem; font-weight: 700; letter-spacing: 1px; backdrop-filter: blur(4px);">
+                                <i class="fas fa-cube" style="margin-right: 0.4rem; color: #60a5fa;"></i>3D VISUALIZATION
                             </div>
                         </div>
-                        <!-- Description Column -->
-                        <div style="padding: 2.5rem; display: flex; flex-direction: column; justify-content: center;">
-                            <div id="sf-fits-icon" style="font-size: 3rem; margin-bottom: 1rem;"></div>
-                            <h3 id="sf-fits-title" style="font-size: 1.5rem; font-weight: 700; color: var(--black); margin-bottom: 0.8rem;"></h3>
-                            <p id="sf-fits-desc" style="color: var(--dark-grey); line-height: 1.8; font-size: 1rem; margin-bottom: 1.5rem;"></p>
-                            <div id="sf-fits-tags" style="display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 2rem;"></div>
-                            <a href="contact.html" class="btn btn-primary" style="align-self: flex-start; font-size: 1rem; padding: 1rem 2rem;">Enquire About This Size</a>
+
+                        <!-- Description & Details -->
+                        <div style="padding: 3.5rem; display: flex; flex-direction: column; justify-content: center;">
+                            <div style="margin-bottom: 2.5rem;">
+                                <div id="sf-fits-icon" style="font-size: 3.5rem; margin-bottom: 1.2rem; filter: drop-shadow(0 10px 15px rgba(0,0,0,0.1));"></div>
+                                <h3 id="sf-fits-title" style="font-size: 1.8rem; font-weight: 800; color: var(--black); margin-bottom: 1rem; line-height: 1.2;"></h3>
+                                <p id="sf-fits-desc" style="color: var(--dark-grey); line-height: 1.8; font-size: 1.1rem; margin-bottom: 2rem;"></p>
+                                <div id="sf-fits-tags" style="display: flex; flex-wrap: wrap; gap: 0.6rem;"></div>
+                            </div>
+                            
+                            <div style="padding-top: 2rem; border-top: 1px solid #eee; display: flex; align-items: center; justify-content: space-between; gap: 1.5rem;">
+                                <div style="display: flex; flex-direction: column;">
+                                    <span style="font-size: 0.8rem; font-weight: 700; color: var(--dark-grey); text-uppercase; margin-bottom: 0.2rem;">Price Inquiry</span>
+                                    <span style="font-size: 0.9rem; color: #666;">Contact for availability</span>
+                                </div>
+                                <a href="contact.html" class="btn btn-primary" style="padding: 1.2rem 2.4rem; border-radius: 16px; font-weight: 800; box-shadow: 0 10px 20px rgba(0,100,255,0.2);">Get A Quote</a>
+                            </div>
                         </div>
                     </div>
                 </div>
 
                 <!-- Empty state -->
-                <div id="sf-empty" style="text-align: center; padding: 4rem 2rem; color: var(--dark-grey);">
-                    <div style="background: white; width: 80px; height: 80px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem; box-shadow: 0 10px 20px rgba(0,0,0,0.05);">
-                        <i class="fas fa-hand-pointer" style="font-size: 2rem; color: var(--primary-blue); opacity: 0.4;"></i>
+                <div id="sf-empty" style="text-align: center; padding: 6rem 2rem; color: var(--dark-grey);">
+                    <div style="position: relative; width: 100px; height: 100px; margin: 0 auto 2.5rem;">
+                        <div style="position: absolute; inset: 0; background: var(--primary-blue); opacity: 0.1; border-radius: 50%; animation: sfPulse 2s infinite;"></div>
+                        <div style="position: absolute; inset: 15%; background: var(--primary-blue); opacity: 0.2; border-radius: 50%;"></div>
+                        <i class="fas fa-vector-square" style="position: relative; font-size: 2.5rem; color: var(--primary-blue); top: 50%; transform: translateY(-50%);"></i>
                     </div>
-                    <h4 style="color: var(--black); margin-bottom: 0.5rem;">Ready to visualize?</h4>
-                    <p>Select a category and size above to see a 3D preview</p>
+                    <h3 style="color: var(--black); font-weight: 800; margin-bottom: 1rem;">Let's find your perfect space</h3>
+                    <p style="max-width: 400px; margin: 0 auto; font-size: 1.1rem;">Choose a storage category and size to see a real-life 3D visualization and floor dimensions.</p>
                 </div>
             </div>
         </section>
 
         <style>
-            .sf-cat-btn { display: flex; flex-direction: column; align-items: center; padding: 1.2rem 2.5rem; border: 2px solid #dde4f7; background: white; border-radius: 20px; cursor: pointer; font-size: 1.1rem; font-weight: 700; color: var(--dark-grey); transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); min-width: 180px; }
-            .sf-cat-btn:hover { border-color: var(--primary-blue); color: var(--primary-blue); transform: translateY(-4px); box-shadow: 0 12px 30px rgba(0,80,255,0.15); }
-            .sf-cat-active { background: var(--primary-blue) !important; color: white !important; border-color: var(--primary-blue) !important; box-shadow: 0 12px 30px rgba(0,80,255,0.3); }
-            .sf-cat-sub { font-size: 0.8rem; font-weight: 400; opacity: 0.8; margin-top: 0.3rem; }
-            .sf-chip { padding: 0.6rem 1.4rem; border: 2px solid #dde4f7; background: white; border-radius: 50px; cursor: pointer; font-size: 0.95rem; font-weight: 600; color: var(--dark-grey); transition: all 0.2s ease; }
-            .sf-chip:hover { border-color: var(--primary-blue); color: var(--primary-blue); transform: scale(1.05); }
-            .sf-chip-active { background: var(--primary-blue) !important; color: white !important; border-color: var(--primary-blue) !important; transform: scale(1.05); box-shadow: 0 4px 12px rgba(0,80,255,0.2); }
-            .sf-tag { background: #f0f4ff; color: var(--primary-blue); border-radius: 50px; padding: 0.4rem 1rem; font-size: 0.85rem; font-weight: 600; border: 1px solid #e0e7ff; }
-            @keyframes sfSlideIn { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
-            @media (max-width: 768px) { #sf-result > div { grid-template-columns: 1fr !important; } }
+            .sf-cat-btn { display: flex; flex-direction: column; align-items: center; padding: 1.5rem; border: 2px solid #dde4f7; background: white; border-radius: 24px; cursor: pointer; font-size: 1.15rem; font-weight: 800; color: var(--dark-grey); transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); min-width: 180px; flex: 1; max-width: 240px; }
+            .sf-cat-btn i { font-size: 1.5rem; margin-bottom: 0.8rem; transition: transform 0.3s ease; }
+            .sf-cat-btn:hover { border-color: var(--primary-blue); color: var(--primary-blue); transform: translateY(-6px); box-shadow: 0 15px 40px rgba(0,80,255,0.18); }
+            .sf-cat-btn:hover i { transform: scale(1.2); }
+            .sf-cat-active { background: var(--primary-blue) !important; color: white !important; border-color: var(--primary-blue) !important; box-shadow: 0 20px 45px rgba(0,80,255,0.35); }
+            .sf-cat-sub { font-size: 0.85rem; font-weight: 600; opacity: 0.8; margin-top: 0.3rem; }
+            .sf-chip { padding: 0.7rem 1.6rem; border: 2px solid #dde4f7; background: white; border-radius: 50px; cursor: pointer; font-size: 1rem; font-weight: 700; color: var(--dark-grey); transition: all 0.3s ease; }
+            .sf-chip:hover { border-color: var(--primary-blue); color: var(--primary-blue); transform: scale(1.08) translateY(-2px); }
+            .sf-chip-active { background: var(--primary-blue) !important; color: white !important; border-color: var(--primary-blue) !important; transform: scale(1.1) translateY(-2px); box-shadow: 0 6px 15px rgba(0,80,255,0.25); }
+            .sf-tag { background: #f0f7ff; color: var(--primary-blue); border-radius: 50px; padding: 0.5rem 1.2rem; font-size: 0.9rem; font-weight: 700; border: 1px solid #e0efff; }
+            @keyframes sfSlideIn { from { opacity: 0; transform: translateY(40px) scale(0.95); } to { opacity: 1; transform: translateY(0) scale(1); } }
+            @keyframes sfPop { 0% { transform: scale(0.8); opacity: 0; } 100% { transform: scale(1); opacity: 1; } }
+            @keyframes sfPulse { 0% { transform: scale(1); opacity: 0.1; } 50% { transform: scale(1.3); opacity: 0.05; } 100% { transform: scale(1); opacity: 0.1; } }
+            @media (max-width: 860px) { #sf-result > div { grid-template-columns: 1fr !important; } }
         </style>
 
         <script>
         (function() {
             var SF_DATA = {
-                small: { 
-                    image: 'assets/size-finder/small.png',
-                    sizes: [
-                        { m: 3,  w: 1.5, l: 2,   icon: '📦', title: 'Essentials Box', desc: 'Perfect for a few boxes of documents, small seasonal items, or a compact personal collection.', tags: ['Documents', 'Seasonal items', 'Small boxes', 'Luggage'] },
-                        { m: 5,  w: 2,   l: 2.5, icon: '📦', title: 'Small Cupboard', desc: 'Fits the contents of a small wardrobe or a couple of filing cabinets with boxed items.', tags: ['Wardrobe contents', 'Filing cabinets', 'Small appliances'] },
-                        { m: 6,  w: 2,   l: 3,   icon: '🛋️', title: 'Studio Extras', desc: 'Holds a small sofa, boxes, and a few personal items. Ideal for studio apartment overflow.', tags: ['Small sofa', 'Boxes', 'Studio overflow'] },
-                        { m: 7,  w: 2,   l: 3.5, icon: '🛋️', title: 'Lounge Corner', desc: 'Comfortably stores a couch, coffee table, and several boxes of household goods.', tags: ['Couch', 'Coffee table', 'Household goods'] },
-                        { m: 8,  w: 2,   l: 4,   icon: '🛏️', title: 'Bedroom Unit', desc: 'Fits a single bed, dresser, and numerous boxes. Suitable for a single room move.', tags: ['Single bed', 'Dresser', 'Single room move'] },
-                        { m: 9,  w: 3,   l: 3,   icon: '🛏️', title: 'Compact Home', desc: 'Space for a single bed, small couch, boxes, and small appliances.', tags: ['Bed', 'Small couch', 'Appliances', 'Boxes'] },
-                        { m: 10, w: 2,   l: 5,   icon: '🏠', title: 'One-Room Move', desc: 'Ideal for the full contents of one furnished room, including a double bed, wardrobe, and boxes.', tags: ['Double bed', 'Wardrobe', 'Desk', 'Boxes'] },
-                        { m: 11, w: 2.2, l: 5,   icon: '🏠', title: 'Room and a Half', desc: 'Handles a fully furnished room plus extra items like a bicycle, sporting equipment, or stock.', tags: ['Furnished room', 'Bicycle', 'Sports gear'] },
-                        { m: 12, w: 3,   l: 4,   icon: '🏠', title: 'Family Room', desc: 'Fits a bedroom suite (queen bed, wardrobe, side tables) plus boxes and additional items.', tags: ['Queen bed', 'Wardrobe', 'Side tables', 'Boxes'] },
-                        { m: 13, w: 2.6, l: 5,   icon: '🚗', title: 'Business Stock', desc: 'Great for small business inventory, retail stock, or a collection of workshop tools.', tags: ['Business stock', 'Inventory', 'Tools'] },
-                        { m: 14, w: 2.8, l: 5,   icon: '🚗', title: 'Starter Business', desc: 'Holds a moderate amount of business stock, office furniture, or medium workshop equipment.', tags: ['Office furniture', 'Stock', 'Equipment'] },
-                        { m: 15, w: 3,   l: 5,   icon: '🛋️', title: 'Lounge Suite', desc: 'Accommodates a full lounge suite, dining set, and a generous number of boxes.', tags: ['Lounge suite', 'Dining set', 'Multiple boxes'] }
-                    ]
-                },
-                medium: { 
-                    image: 'assets/size-finder/medium.png',
-                    sizes: [
-                        { m: 16, w: 4,   l: 4,   icon: '🏡', title: 'Two-Room Apartment', desc: 'Stores the full contents of a two-room apartment including bedroom and lounge furniture.', tags: ['2-room apartment', 'Bedroom suite', 'Lounge'] },
-                        { m: 18, w: 3,   l: 6,   icon: '🏡', title: 'Small Flat', desc: 'Handles a small flat worth of furniture, appliances, and boxes comfortably.', tags: ['Flat contents', 'Appliances', 'Furniture'] },
-                        { m: 20, w: 4,   l: 5,   icon: '🏠', title: 'Two-Bedroom Home', desc: 'Great for a two-bedroom home contents, beds, lounge suite, kitchen items, and boxes.', tags: ['2-bedroom home', 'Kitchen items', 'Lounge'] },
-                        { m: 22, w: 4,   l: 5.5, icon: '🏠', title: 'Full Home Starter', desc: 'Fits all contents of a typical 2-bedroom home with space for appliances and extra items.', tags: ['Full 2-bed home', 'Appliances', 'Extra boxes'] },
-                        { m: 24, w: 4,   l: 6,   icon: '🏠', title: 'Home and Extras', desc: 'Comfortable storage for a full 2-bedroom home plus garden furniture or bulky equipment.', tags: ['2-bed home', 'Garden furniture', 'Bulky items'] },
-                        { m: 25, w: 5,   l: 5,   icon: '🏘️', title: 'Three-Bedroom Home', desc: 'Accommodates the contents of a standard 3-bedroom home with room to spare.', tags: ['3-bedroom home', 'Full furniture', 'Appliances'] },
-                        { m: 27, w: 4.5, l: 6,   icon: '🏘️', title: 'Family Home', desc: 'Perfect for a full family home move including dining room, lounge, and multiple bedrooms.', tags: ['Family home', 'Dining room', '3 bedrooms'] },
-                        { m: 30, w: 5,   l: 6,   icon: '🏭', title: 'Business Storage', desc: 'Excellent for SME inventory, bulk retail stock, office furniture, or construction equipment.', tags: ['SME inventory', 'Retail stock', 'Office furniture'] },
-                        { m: 32, w: 4,   l: 8,   icon: '🏭', title: 'Workshop Storage', desc: 'A full workshop or trade vehicle inventory, tools, pallets, machinery, and supplies.', tags: ['Workshop tools', 'Pallets', 'Machinery'] },
-                        { m: 35, w: 5,   l: 7,   icon: '🏡', title: 'Large Family Home', desc: 'For larger 3 to 4 bedroom homes with full furniture, appliances, and everything in between.', tags: ['3-4 bedroom home', 'Full household', 'Appliances'] },
-                        { m: 36, w: 6,   l: 6,   icon: '🏪', title: 'Retail Overflow', desc: 'Ideal for a retail business overflow, seasonal stock rotation, or large-scale home contents.', tags: ['Retail overflow', 'Seasonal stock', 'Large home'] },
-                        { m: 40, w: 5,   l: 8,   icon: '🏪', title: 'Full Business Unit', desc: 'Stores a full office or retail setup, desks, shelving, stock, and equipment with ease.', tags: ['Office setup', 'Retail equipment', 'Full stock'] }
-                    ]
-                },
-                large: { 
-                    image: 'assets/size-finder/large.png',
-                    sizes: [
-                        { m: 42,  w: 6,   l: 7,    icon: '🏭', title: 'Commercial Unit', desc: 'Handles a full commercial relocation including heavy machinery, office suites, and bulk stock.', tags: ['Commercial move', 'Machinery', 'Bulk stock'] },
-                        { m: 44,  w: 4,   l: 11,   icon: '🏭', title: 'Industrial Starter', desc: 'Long format unit ideal for pipes, beams, long machinery, or industrial equipment storage.', tags: ['Long items', 'Industrial gear', 'Structural elements'] },
-                        { m: 50,  w: 5,   l: 10,   icon: '🏬', title: 'Large Business', desc: 'Perfect for medium-sized business inventory, a full office fit-out, or manufacturing stock.', tags: ['Medium business', 'Office fit-out', 'Manufacturing'] },
-                        { m: 51,  w: 6,   l: 8.5,  icon: '🏬', title: 'Office Relocation', desc: 'Stores a full mid-size office during relocation, desks, server racks, cabinets, and stock.', tags: ['Office relocation', 'Server racks', 'Cabinets'] },
-                        { m: 60,  w: 6,   l: 10,   icon: '🏢', title: 'Corporate Storage', desc: 'Ideal for corporate archiving, large-scale product inventory, or multi-department equipment.', tags: ['Corporate archive', 'Product inventory', 'Multi-dept equipment'] },
-                        { m: 61,  w: 6.1, l: 10,   icon: '🏢', title: 'Large Corporate', desc: 'A full corporate unit for major office moves, document archiving, and heavy equipment.', tags: ['Major office move', 'Archiving', 'Heavy equipment'] },
-                        { m: 64,  w: 8,   l: 8,    icon: '🏗️', title: 'Construction Hub', desc: 'Spacious square unit for construction material storage, equipment laydown, and site supplies.', tags: ['Construction material', 'Equipment laydown', 'Site supplies'] },
-                        { m: 81,  w: 9,   l: 9,    icon: '🏗️', title: 'Large Industrial', desc: 'For heavy plant, vehicles, large machinery, or a warehouse worth of palletised goods.', tags: ['Heavy plant', 'Vehicles', 'Palletised goods', 'Machinery'] },
-                        { m: 97,  w: 7,   l: 13.9, icon: '🚛', title: 'Fleet Storage', desc: 'Accommodates multiple vehicles, large fleet equipment, or oversized industrial shipments.', tags: ['Multiple vehicles', 'Fleet equipment', 'Industrial shipments'] },
-                        { m: 100, w: 10,  l: 10,   icon: '🚛', title: 'Full Warehouse Bay', desc: 'A full warehouse bay, ideal for wholesale inventory, full container offloading, or major relocations.', tags: ['Wholesale inventory', 'Container offload', 'Major relocation'] },
-                        { m: 119, w: 7,   l: 17,   icon: '🏭', title: 'Industrial Warehouse', desc: 'Large-scale industrial storage for manufacturing inventory, equipment parks, or bulk distribution.', tags: ['Manufacturing', 'Equipment park', 'Bulk distribution'] },
-                        { m: 141, w: 9,   l: 15.7, icon: '🏭', title: 'Enterprise Unit', desc: 'Enterprise-level storage for full corporate relocations, large equipment fleets, or industrial operations.', tags: ['Corporate relocation', 'Equipment fleet', 'Industrial ops'] },
-                        { m: 142, w: 10,  l: 14.2, icon: '🏭', title: 'Maximum Capacity', desc: 'Our largest unit, suited for major industrial operations, full warehouse contents, or multi-business storage.', tags: ['Industrial ops', 'Full warehouse', 'Multi-business'] }
-                    ]
-                }
+                small: { image: 'assets/size-finder/small.png', sizes: [
+                    { m: 3,  w: 1.5, l: 2,   icon: '📦', title: 'Essentials Box', desc: 'Perfect for a few boxes of documents, small seasonal items, or a compact personal collection.', tags: ['Documents', 'Seasonal items', 'Small boxes', 'Luggage'] },
+                    { m: 5,  w: 2,   l: 2.5, icon: '📦', title: 'Small Cupboard', desc: 'Fits the contents of a small wardrobe or a couple of filing cabinets with boxed items.', tags: ['Wardrobe contents', 'Filing cabinets', 'Small appliances'] },
+                    { m: 6,  w: 2,   l: 3,   icon: '🛋️', title: 'Studio Extras', desc: 'Holds a small sofa, boxes, and a few personal items. Ideal for studio apartment overflow.', tags: ['Small sofa', 'Boxes', 'Studio overflow'] },
+                    { m: 7,  w: 2,   l: 3.5, icon: '🛋️', title: 'Lounge Corner', desc: 'Comfortably stores a couch, coffee table, and several boxes of household goods.', tags: ['Couch', 'Coffee table', 'Household goods'] },
+                    { m: 8,  w: 2,   l: 4,   icon: '🛏️', title: 'Bedroom Unit', desc: 'Fits a single bed, dresser, and numerous boxes. Suitable for a single room move.', tags: ['Single bed', 'Dresser', 'Single room move'] },
+                    { m: 9,  w: 3,   l: 3,   icon: '🛏️', title: 'Compact Home', desc: 'Space for a single bed, small couch, boxes, and small appliances.', tags: ['Bed', 'Small couch', 'Appliances', 'Boxes'] },
+                    { m: 10, w: 2,   l: 5,   icon: '🏠', title: 'One-Room Move', desc: 'Ideal for the full contents of one furnished room, including a double bed, wardrobe, and boxes.', tags: ['Double bed', 'Wardrobe', 'Desk', 'Boxes'] },
+                    { m: 11, w: 2.2, l: 5,   icon: '🏠', title: 'Room and a Half', desc: 'Handles a fully furnished room plus extra items like a bicycle, sporting equipment, or stock.', tags: ['Furnished room', 'Bicycle', 'Sports gear'] },
+                    { m: 12, w: 3,   l: 4,   icon: '🏠', title: 'Family Room', desc: 'Fits a bedroom suite (queen bed, wardrobe, side tables) plus boxes and additional items.', tags: ['Queen bed', 'Wardrobe', 'Side tables', 'Boxes'] },
+                    { m: 13, w: 2.6, l: 5,   icon: '🚗', title: 'Business Stock', desc: 'Great for small business inventory, retail stock, or a collection of workshop tools.', tags: ['Business stock', 'Inventory', 'Tools'] },
+                    { m: 14, w: 2.8, l: 5,   icon: '🚗', title: 'Starter Business', desc: 'Holds a moderate amount of business stock, office furniture, or medium workshop equipment.', tags: ['Office furniture', 'Stock', 'Equipment'] },
+                    { m: 15, w: 3,   l: 5,   icon: '🛋️', title: 'Lounge Suite', desc: 'Accommodates a full lounge suite, dining set, and a generous number of boxes.', tags: ['Lounge suite', 'Dining set', 'Multiple boxes'] }
+                ]},
+                medium: { image: 'assets/size-finder/medium.png', sizes: [
+                    { m: 16, w: 4,   l: 4,   icon: '🏡', title: 'Two-Room Apartment', desc: 'Stores the full contents of a two-room apartment including bedroom and lounge furniture.', tags: ['2-room apartment', 'Bedroom suite', 'Lounge'] },
+                    { m: 18, w: 3,   l: 6,   icon: '🏡', title: 'Small Flat', desc: 'Handles a small flat worth of furniture, appliances, and boxes comfortably.', tags: ['Flat contents', 'Appliances', 'Furniture'] },
+                    { m: 20, w: 4,   l: 5,   icon: '🏠', title: 'Two-Bedroom Home', desc: 'Great for a two-bedroom home contents, beds, lounge suite, kitchen items, and boxes.', tags: ['2-bedroom home', 'Kitchen items', 'Lounge'] },
+                    { m: 22, w: 4,   l: 5.5, icon: '🏠', title: 'Full Home Starter', desc: 'Fits all contents of a typical 2-bedroom home with space for appliances and extra items.', tags: ['Full 2-bed home', 'Appliances', 'Extra boxes'] },
+                    { m: 24, w: 4,   l: 6,   icon: '🏠', title: 'Home and Extras', desc: 'Comfortable storage for a full 2-bedroom home plus garden furniture or bulky equipment.', tags: ['2-bed home', 'Garden furniture', 'Bulky items'] },
+                    { m: 25, w: 5,   l: 5,   icon: '🏘️', title: 'Three-Bedroom Home', desc: 'Accommodates the contents of a standard 3-bedroom home with room to spare.', tags: ['3-bedroom home', 'Full furniture', 'Appliances'] },
+                    { m: 27, w: 4.5, l: 6,   icon: '🏘️', title: 'Family Home', desc: 'Perfect for a full family home move including dining room, lounge, and multiple bedrooms.', tags: ['Family home', 'Dining room', '3 bedrooms'] },
+                    { m: 30, w: 5,   l: 6,   icon: '🏭', title: 'Business Storage', desc: 'Excellent for SME inventory, bulk retail stock, office furniture, or construction equipment.', tags: ['SME inventory', 'Retail stock', 'Office furniture'] },
+                    { m: 32, w: 4,   l: 8,   icon: '🏭', title: 'Workshop Storage', desc: 'A full workshop or trade vehicle inventory, tools, pallets, machinery, and supplies.', tags: ['Workshop tools', 'Pallets', 'Machinery'] },
+                    { m: 35, w: 5,   l: 7,   icon: '🏡', title: 'Large Family Home', desc: 'For larger 3 to 4 bedroom homes with full furniture, appliances, and everything in between.', tags: ['3-4 bedroom home', 'Full household', 'Appliances'] },
+                    { m: 36, w: 6,   l: 6,   icon: '🏪', title: 'Retail Overflow', desc: 'Ideal for a retail business overflow, seasonal stock rotation, or large-scale home contents.', tags: ['Retail overflow', 'Seasonal stock', 'Large home'] },
+                    { m: 40, w: 5,   l: 8,   icon: '🏪', title: 'Full Business Unit', desc: 'Stores a full office or retail setup, desks, shelving, stock, and equipment with ease.', tags: ['Office setup', 'Retail equipment', 'Full stock'] }
+                ]},
+                large: { image: 'assets/size-finder/large.png', sizes: [
+                    { m: 42,  w: 6,   l: 7,    icon: '🏭', title: 'Commercial Unit', desc: 'Handles a full commercial relocation including heavy machinery, office suites, and bulk stock.', tags: ['Commercial move', 'Machinery', 'Bulk stock'] },
+                    { m: 44,  w: 4,   l: 11,   icon: '🏭', title: 'Industrial Starter', desc: 'Long format unit ideal for pipes, beams, long machinery, or industrial equipment storage.', tags: ['Long items', 'Industrial gear', 'Structural elements'] },
+                    { m: 50,  w: 5,   l: 10,   icon: '🏬', title: 'Large Business', desc: 'Perfect for medium-sized business inventory, a full office fit-out, or manufacturing stock.', tags: ['Medium business', 'Office fit-out', 'Manufacturing'] },
+                    { m: 51,  w: 6,   l: 8.5,  icon: '🏬', title: 'Office Relocation', desc: 'Stores a full mid-size office during relocation, desks, server racks, cabinets, and stock.', tags: ['Office relocation', 'Server racks', 'Cabinets'] },
+                    { m: 60,  w: 6,   l: 10,   icon: '🏢', title: 'Corporate Storage', desc: 'Ideal for corporate archiving, large-scale product inventory, or multi-department equipment.', tags: ['Corporate archive', 'Product inventory', 'Multi-dept equipment'] },
+                    { m: 61,  w: 6.1, l: 10,   icon: '🏢', title: 'Large Corporate', desc: 'A full corporate unit for major office moves, document archiving, and heavy equipment.', tags: ['Major office move', 'Archiving', 'Heavy equipment'] },
+                    { m: 64,  w: 8,   l: 8,    icon: '🏗️', title: 'Construction Hub', desc: 'Spacious square unit for construction material storage, equipment laydown, and site supplies.', tags: ['Construction material', 'Equipment laydown', 'Site supplies'] },
+                    { m: 81,  w: 9,   l: 9,    icon: '🏗️', title: 'Large Industrial', desc: 'For heavy plant, vehicles, large machinery, or a warehouse worth of palletised goods.', tags: ['Heavy plant', 'Vehicles', 'Palletised goods', 'Machinery'] },
+                    { m: 97,  w: 7,   l: 13.9, icon: '🚛', title: 'Fleet Storage', desc: 'Accommodates multiple vehicles, large fleet equipment, or oversized industrial shipments.', tags: ['Multiple vehicles', 'Fleet equipment', 'Industrial shipments'] },
+                    { m: 100, w: 10,  l: 10,   icon: '🚛', title: 'Full Warehouse Bay', desc: 'A full warehouse bay, ideal for wholesale inventory, full container offloading, or major relocations.', tags: ['Wholesale inventory', 'Container offload', 'Major relocation'] },
+                    { m: 119, w: 7,   l: 17,   icon: '🏭', title: 'Industrial Warehouse', desc: 'Large-scale industrial storage for manufacturing inventory, equipment parks, or bulk distribution.', tags: ['Manufacturing', 'Equipment park', 'Bulk distribution'] },
+                    { m: 141, w: 9,   l: 15.7, icon: '🏭', title: 'Enterprise Unit', desc: 'Enterprise-level storage for full corporate relocations, large equipment fleets, or industrial operations.', tags: ['Corporate relocation', 'Equipment fleet', 'Industrial ops'] },
+                    { m: 142, w: 10,  l: 14.2, icon: '🏭', title: 'Maximum Capacity', desc: 'Our largest unit, suited for major industrial operations, full warehouse contents, or multi-business storage.', tags: ['Industrial ops', 'Full warehouse', 'Multi-business'] }
+                ]}
             };
             var sfCurrentCat = 'small';
 
@@ -338,50 +359,23 @@
                 resultEl.style.display = 'block';
                 resultEl.style.animation = 'none';
                 void resultEl.offsetHeight;
-                resultEl.style.animation = 'sfSlideIn 0.5s cubic-bezier(0.4, 0, 0.2, 1)';
+                resultEl.style.animation = 'sfSlideIn 0.6s cubic-bezier(0.23, 1, 0.32, 1)';
                 
-                // Update 3D Image
-                var imgEl = document.getElementById('sf-3d-image');
-                imgEl.style.opacity = '0';
-                setTimeout(function() {
-                    imgEl.src = SF_DATA[sfCurrentCat].image;
-                    imgEl.style.opacity = '1';
-                }, 100);
+                // Update HUD Text directly ON the picture
+                document.getElementById('sf-hud-area').textContent = sizeData.m + ' m\u00b2';
+                document.getElementById('sf-hud-len').textContent = sizeData.l + 'm';
+                document.getElementById('sf-hud-wid').textContent = sizeData.w + 'm';
 
-                // Update Technical View
-                document.getElementById('sf-svg-title').textContent = sizeData.m + ' m\u00b2';
-                document.getElementById('sf-svg-dims').textContent = sizeData.w + 'm \u00d7 ' + sizeData.l + 'm';
-                
-                // Update Info
+                // Update 3D Image source
+                var imgEl = document.getElementById('sf-3d-image');
+                imgEl.src = SF_DATA[sfCurrentCat].image;
+
+                // Update Side Details
                 document.getElementById('sf-fits-icon').textContent = sizeData.icon;
                 document.getElementById('sf-fits-title').textContent = sizeData.title;
                 document.getElementById('sf-fits-desc').textContent = sizeData.desc;
                 document.getElementById('sf-fits-tags').innerHTML = sizeData.tags.map(function(t) { return '<span class="sf-tag">' + t + '</span>'; }).join('');
-                
-                sfRenderSVG(sizeData.w, sizeData.l, sizeData.m);
             };
-
-            function sfRenderSVG(w, l, area) {
-                var svg = document.getElementById('sf-svg');
-                var pad = 25, svgW = 280, svgH = 200;
-                var scale = Math.min((svgW - pad*2) / l, (svgH - pad*2) / w);
-                var rW = Math.round(l * scale), rH = Math.round(w * scale);
-                var rx = (svgW - rW) / 2, ry = (svgH - rH) / 2;
-                var fills = { small: '#dbeafe', medium: '#dcfce7', large: '#fef3c7' };
-                var strokes = { small: '#3b82f6', medium: '#22c55e', large: '#f59e0b' };
-                var fill = fills[sfCurrentCat], stroke = strokes[sfCurrentCat];
-                
-                var html = '<rect x="0" y="0" width="' + svgW + '" height="' + svgH + '" fill="#f8faff" rx="12"/>';
-                html += '<defs><pattern id="sfgrid' + area + '" width="20" height="20" patternUnits="userSpaceOnUse"><path d="M 20 0 L 0 0 0 20" fill="none" stroke="#e2e8f0" stroke-width="0.5"/></pattern></defs>';
-                html += '<rect x="0" y="0" width="' + svgW + '" height="' + svgH + '" fill="url(#sfgrid' + area + ')" rx="12"/>';
-                html += '<rect x="' + rx + '" y="' + ry + '" width="' + rW + '" height="' + rH + '" fill="' + fill + '" stroke="' + stroke + '" stroke-width="2.5" rx="4"/>';
-                html += '<line x1="' + rx + '" y1="' + (ry-8) + '" x2="' + (rx+rW) + '" y2="' + (ry-8) + '" stroke="' + stroke + '" stroke-width="1.5"/>';
-                html += '<text x="' + (rx+rW/2) + '" y="' + (ry-12) + '" text-anchor="middle" font-size="10" fill="' + stroke + '" font-weight="700">' + l + 'm</text>';
-                html += '<line x1="' + (rx-8) + '" y1="' + ry + '" x2="' + (rx-8) + '" y2="' + (ry+rH) + '" stroke="' + stroke + '" stroke-width="1.5"/>';
-                html += '<text x="' + (rx-14) + '" y="' + (ry+rH/2) + '" text-anchor="middle" font-size="10" fill="' + stroke + '" font-weight="700" transform="rotate(-90 ' + (rx-14) + ' ' + (ry+rH/2) + ')">' + w + 'm</text>';
-                html += '<text x="' + (rx+rW/2) + '" y="' + (ry+rH/2+5) + '" text-anchor="middle" font-size="14" fill="' + stroke + '" font-weight="800">' + area + ' m\u00b2</text>';
-                svg.innerHTML = html;
-            }
 
             if (document.readyState === 'loading') {
                 document.addEventListener('DOMContentLoaded', sfRenderChips);
