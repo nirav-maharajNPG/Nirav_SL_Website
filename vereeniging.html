@@ -194,11 +194,7 @@
                 <!-- Size Carousel -->
                 <div style="position: relative; max-width: 1000px; margin: 0 auto 3rem; display: flex; align-items: center;">
                     <button class="sf-scroll-btn" onclick="sfScroll(-200)" aria-label="Scroll Left"><i class="fas fa-chevron-left"></i></button>
-                    
-                    <div id="sf-chips-container" style="flex: 1; overflow-x: auto; scroll-behavior: smooth; display: flex; gap: 0.8rem; padding: 1.5rem 0.5rem; -ms-overflow-style: none; scrollbar-width: none;">
-                        <!-- Chips rendered here -->
-                    </div>
-
+                    <div id="sf-chips-container" style="flex: 1; overflow-x: auto; scroll-behavior: smooth; display: flex; gap: 0.8rem; padding: 1.5rem 0.5rem; -ms-overflow-style: none; scrollbar-width: none;"></div>
                     <button class="sf-scroll-btn" onclick="sfScroll(200)" aria-label="Scroll Right"><i class="fas fa-chevron-right"></i></button>
                 </div>
 
@@ -206,33 +202,45 @@
                 <div id="sf-result" style="display: none; max-width: 1000px; margin: 0 auto; background: white; border-radius: 32px; box-shadow: 0 40px 100px rgba(0,0,0,0.1); overflow: hidden; border: 1px solid rgba(0,0,0,0.05);">
                     <div style="display: grid; grid-template-columns: 1.3fr 1fr; gap: 0;">
                         <!-- Isometric Visualizer -->
-                        <div style="background: white; position: relative; display: flex; align-items: center; justify-content: center; overflow: hidden; padding: 1rem; border-right: 1px solid #f0f0f0;">
+                        <div style="background: white; position: relative; display: flex; align-items: center; justify-content: center; overflow: hidden; padding: 2rem; border-right: 1px solid #f0f0f0;">
                             <!-- 3D Base Image -->
-                            <img id="sf-3d-image" src="" alt="3D Storage Unit" style="width: 100%; height: auto; display: block; filter: contrast(1.02);">
+                            <img id="sf-3d-image" src="" alt="3D Storage Unit" style="width: 100%; height: auto; display: block; filter: contrast(1.02) brightness(1.02);">
                             
-                            <!-- Isometric Dimension Labels (Perspective Aligned) -->
+                            <!-- Architectural Dimension Overlay -->
                             <div style="position: absolute; inset: 0; pointer-events: none;">
-                                <!-- Area Label -->
-                                <div style="position: absolute; top: 2rem; left: 2rem; background: var(--primary-blue); color: white; padding: 0.8rem 1.5rem; border-radius: 16px; box-shadow: 0 10px 20px rgba(0,80,255,0.2);">
-                                    <div id="sf-hud-area" style="font-size: 1.8rem; font-weight: 900; line-height: 1;"></div>
-                                    <div style="font-size: 0.7rem; font-weight: 700; opacity: 0.9; text-uppercase; letter-spacing: 1px;">Estimated Size</div>
+                                <!-- Area Badge -->
+                                <div style="position: absolute; top: 2.5rem; left: 2.5rem; background: var(--primary-blue); color: white; padding: 1rem 2rem; border-radius: 20px; box-shadow: 0 15px 35px rgba(0,80,255,0.25);">
+                                    <div id="sf-hud-area" style="font-size: 2rem; font-weight: 900; line-height: 1;"></div>
+                                    <div style="font-size: 0.75rem; font-weight: 700; opacity: 0.9; text-uppercase; letter-spacing: 1.5px; margin-top: 2px;">Estimated Size</div>
                                 </div>
 
-                                <!-- Length Label (Left Edge Alignment) -->
-                                <div style="position: absolute; bottom: 18%; left: 10%; width: 50%; display: flex; flex-direction: column; align-items: center; transform: rotate(23deg);">
-                                    <div id="sf-hud-len" style="font-size: 1.4rem; font-weight: 900; color: #111; margin-bottom: 0.5rem; letter-spacing: -0.5px;"></div>
-                                    <div style="width: 100%; height: 2px; border-top: 2px dashed #bbb;"></div>
+                                <!-- Length (Left Side) -->
+                                <div style="position: absolute; bottom: 18%; left: 8%; width: 45%; transform: rotate(30deg);">
+                                    <div style="display: flex; flex-direction: column; align-items: center; position: relative;">
+                                        <div id="sf-hud-len" style="font-size: 1.4rem; font-weight: 800; color: #1a1a1a; margin-bottom: 0.4rem; font-family: 'Inter', sans-serif;"></div>
+                                        <div style="width: 100%; height: 1.5px; background: #999; position: relative;">
+                                            <!-- Tick marks -->
+                                            <div style="position: absolute; left: 0; top: -4px; width: 1.5px; height: 10px; background: #999; transform: rotate(-45deg);"></div>
+                                            <div style="position: absolute; right: 0; top: -4px; width: 1.5px; height: 10px; background: #999; transform: rotate(-45deg);"></div>
+                                        </div>
+                                    </div>
                                 </div>
 
-                                <!-- Width Label (Right Edge Alignment) -->
-                                <div style="position: absolute; bottom: 28%; right: 5%; width: 35%; display: flex; flex-direction: column; align-items: center; transform: rotate(-28deg);">
-                                    <div id="sf-hud-wid" style="font-size: 1.4rem; font-weight: 900; color: #111; margin-bottom: 0.5rem; letter-spacing: -0.5px;"></div>
-                                    <div style="width: 100%; height: 2px; border-top: 2px dashed #bbb;"></div>
+                                <!-- Width (Right Side) -->
+                                <div style="position: absolute; bottom: 25%; right: 4%; width: 32%; transform: rotate(-30deg);">
+                                    <div style="display: flex; flex-direction: column; align-items: center; position: relative;">
+                                        <div id="sf-hud-wid" style="font-size: 1.4rem; font-weight: 800; color: #1a1a1a; margin-bottom: 0.4rem; font-family: 'Inter', sans-serif;"></div>
+                                        <div style="width: 100%; height: 1.5px; background: #999; position: relative;">
+                                            <!-- Tick marks -->
+                                            <div style="position: absolute; left: 0; top: -4px; width: 1.5px; height: 10px; background: #999; transform: rotate(45deg);"></div>
+                                            <div style="position: absolute; right: 0; top: -4px; width: 1.5px; height: 10px; background: #999; transform: rotate(45deg);"></div>
+                                        </div>
+                                    </div>
                                 </div>
 
                                 <!-- Disclaimer -->
-                                <div style="position: absolute; bottom: 1rem; left: 50%; transform: translateX(-50%); font-size: 0.7rem; font-weight: 700; color: #999; text-uppercase; letter-spacing: 1px; opacity: 0.6;">
-                                    * Visualization shows estimated proportions
+                                <div style="position: absolute; bottom: 1.5rem; left: 50%; transform: translateX(-50%); font-size: 0.7rem; font-weight: 700; color: #aaa; text-uppercase; letter-spacing: 1px;">
+                                    * Proportions shown are estimated for visual guidance
                                 </div>
                             </div>
                         </div>
@@ -240,13 +248,13 @@
                         <!-- Info Column -->
                         <div style="padding: 4rem; display: flex; flex-direction: column; justify-content: center; background: #fafbfc;">
                             <div style="margin-bottom: 2.5rem;">
-                                <div id="sf-fits-icon" style="font-size: 3.5rem; margin-bottom: 1.5rem;"></div>
-                                <h3 id="sf-fits-title" style="font-size: 2rem; font-weight: 800; color: #1a1a1a; margin-bottom: 1rem;"></h3>
-                                <p id="sf-fits-desc" style="color: #4b5563; line-height: 1.8; font-size: 1.1rem; margin-bottom: 2.5rem;"></p>
-                                <div id="sf-fits-tags" style="display: flex; flex-wrap: wrap; gap: 0.6rem;"></div>
+                                <div id="sf-fits-icon" style="font-size: 4rem; margin-bottom: 1.5rem;"></div>
+                                <h3 id="sf-fits-title" style="font-size: 2.2rem; font-weight: 800; color: #111; margin-bottom: 1rem;"></h3>
+                                <p id="sf-fits-desc" style="color: #4b5563; line-height: 1.8; font-size: 1.15rem; margin-bottom: 2.5rem;"></p>
+                                <div id="sf-fits-tags" style="display: flex; flex-wrap: wrap; gap: 0.7rem;"></div>
                             </div>
-                            <div style="padding-top: 2.5rem; border-top: 1px solid #e5e7eb; display: flex; align-items: center; justify-content: space-between;">
-                                <a href="contact.html" class="btn btn-primary" style="padding: 1.2rem 2.5rem; border-radius: 16px; font-weight: 800;">Contact Us</a>
+                            <div style="padding-top: 2.5rem; border-top: 1px solid #e5e7eb;">
+                                <a href="contact.html" class="btn btn-primary" style="padding: 1.4rem 3rem; border-radius: 18px; font-weight: 800; width: 100%; text-align: center;">Get A Quick Quote</a>
                             </div>
                         </div>
                     </div>
@@ -254,9 +262,9 @@
 
                 <!-- Empty state -->
                 <div id="sf-empty" style="text-align: center; padding: 6rem 2rem; color: var(--dark-grey);">
-                    <i class="fas fa-expand-arrows-alt" style="font-size: 2rem; color: var(--primary-blue); margin-bottom: 1.5rem; opacity: 0.3;"></i>
-                    <h3 style="color: #1a1a1a; font-weight: 800; margin-bottom: 0.5rem;">Select a unit size</h3>
-                    <p>Proportions shown are estimated for visual guidance</p>
+                    <i class="fas fa-vector-square" style="font-size: 3rem; color: var(--primary-blue); opacity: 0.2; margin-bottom: 1.5rem;"></i>
+                    <h3 style="color: #111; font-weight: 800; margin-bottom: 0.5rem;">Select a unit size</h3>
+                    <p>Experience an isometric 3D preview of your storage space</p>
                 </div>
             </div>
         </section>
@@ -264,17 +272,17 @@
         <style>
             .sf-cat-btn { display: flex; flex-direction: column; align-items: center; padding: 1.5rem; border: 2px solid #e5e7eb; background: white; border-radius: 24px; cursor: pointer; font-size: 1.1rem; font-weight: 800; color: #4b5563; transition: all 0.4s ease; min-width: 170px; flex: 1; max-width: 240px; }
             .sf-cat-btn i { font-size: 1.5rem; margin-bottom: 0.8rem; }
-            .sf-cat-btn:hover { border-color: var(--primary-blue); color: var(--primary-blue); transform: translateY(-4px); box-shadow: 0 15px 35px rgba(0,0,0,0.08); }
-            .sf-cat-active { background: var(--primary-blue) !important; color: white !important; border-color: var(--primary-blue) !important; box-shadow: 0 20px 40px rgba(0,80,255,0.3); }
+            .sf-cat-btn:hover { border-color: var(--primary-blue); color: var(--primary-blue); transform: translateY(-5px); box-shadow: 0 15px 35px rgba(0,0,0,0.08); }
+            .sf-cat-active { background: var(--primary-blue) !important; color: white !important; border-color: var(--primary-blue) !important; box-shadow: 0 20px 45px rgba(0,80,255,0.35); transform: scale(1.05); }
             .sf-cat-sub { font-size: 0.8rem; font-weight: 500; opacity: 0.9; margin-top: 0.3rem; }
             #sf-chips-container::-webkit-scrollbar { display: none; }
-            .sf-chip { flex: 0 0 auto; padding: 0.9rem 1.8rem; border: 2px solid #e5e7eb; background: white; border-radius: 50px; cursor: pointer; font-size: 1rem; font-weight: 700; color: #4b5563; transition: all 0.25s ease; }
+            .sf-chip { flex: 0 0 auto; padding: 1rem 2rem; border: 2px solid #e5e7eb; background: white; border-radius: 50px; cursor: pointer; font-size: 1rem; font-weight: 700; color: #4b5563; transition: all 0.25s ease; }
             .sf-chip:hover { border-color: var(--primary-blue); color: var(--primary-blue); }
-            .sf-chip-active { background: var(--primary-blue) !important; color: white !important; border-color: var(--primary-blue) !important; transform: scale(1.1); box-shadow: 0 8px 20px rgba(0,80,255,0.2); }
-            .sf-scroll-btn { background: white; border: 2px solid #e5e7eb; width: 48px; height: 48px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; color: #111827; transition: all 0.2s ease; flex-shrink: 0; box-shadow: 0 4px 15px rgba(0,0,0,0.05); z-index: 10; }
+            .sf-chip-active { background: var(--primary-blue) !important; color: white !important; border-color: var(--primary-blue) !important; transform: scale(1.1); box-shadow: 0 10px 25px rgba(0,80,255,0.25); }
+            .sf-scroll-btn { background: white; border: 2px solid #e5e7eb; width: 52px; height: 52px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; color: #111; transition: all 0.3s ease; flex-shrink: 0; box-shadow: 0 5px 15px rgba(0,0,0,0.05); z-index: 10; }
             .sf-scroll-btn:hover { background: var(--primary-blue); color: white; border-color: var(--primary-blue); transform: scale(1.1); }
-            .sf-tag { background: #f3f4f6; color: #374151; border-radius: 50px; padding: 0.5rem 1.2rem; font-size: 0.9rem; font-weight: 700; border: 1px solid #e5e7eb; }
-            @media (max-width: 900px) { #sf-result > div { grid-template-columns: 1fr !important; } }
+            .sf-tag { background: #f3f4f6; color: #374151; border-radius: 50px; padding: 0.6rem 1.4rem; font-size: 0.9rem; font-weight: 700; border: 1px solid #e5e7eb; }
+            @media (max-width: 950px) { #sf-result > div { grid-template-columns: 1fr !important; } }
         </style>
 
         <script>
