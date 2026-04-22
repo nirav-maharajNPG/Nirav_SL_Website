@@ -2347,3 +2347,33 @@ button, input, select, textarea {
     .nav-logo img { height: 70px !important; }
     .navbar.scrolled .nav-logo img { height: 50px !important; }
 } 
+
+/* Angled Split Hero Mobile Fix */
+@media (max-width: 992px) {
+    .angled-split-hero {
+        display: flex !important;
+        flex-direction: column-reverse !important;
+        height: auto !important;
+    }
+    .angled-hero-right {
+        width: 100% !important;
+        height: 400px !important;
+        padding: 0 !important;
+    }
+    .angled-hero-right img {
+        width: 100% !important;
+        height: 100% !important;
+        object-fit: cover !important;
+    }
+    .angled-hero-left {
+        width: 100% !important;
+        padding: 4rem 1.5rem !important;
+        text-align: center !important;
+    }
+    .angled-hero-content {
+        text-align: center !important;
+    }
+    .angled-hero-content .hero-actions {
+        justify-content: center !important;
+    }
+} 
