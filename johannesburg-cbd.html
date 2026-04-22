@@ -208,26 +208,31 @@
                         <!-- Isometric Visualizer -->
                         <div style="background: white; position: relative; display: flex; align-items: center; justify-content: center; overflow: hidden; padding: 1rem; border-right: 1px solid #f0f0f0;">
                             <!-- 3D Base Image -->
-                            <img id="sf-3d-image" src="" alt="3D Storage Unit" style="width: 100%; height: auto; display: block;">
+                            <img id="sf-3d-image" src="" alt="3D Storage Unit" style="width: 100%; height: auto; display: block; filter: contrast(1.02);">
                             
-                            <!-- Isometric Dimension Labels (Parallel to edges) -->
+                            <!-- Isometric Dimension Labels (Perspective Aligned) -->
                             <div style="position: absolute; inset: 0; pointer-events: none;">
-                                <!-- Area Label (Top Corner) -->
+                                <!-- Area Label -->
                                 <div style="position: absolute; top: 2rem; left: 2rem; background: var(--primary-blue); color: white; padding: 0.8rem 1.5rem; border-radius: 16px; box-shadow: 0 10px 20px rgba(0,80,255,0.2);">
                                     <div id="sf-hud-area" style="font-size: 1.8rem; font-weight: 900; line-height: 1;"></div>
-                                    <div style="font-size: 0.7rem; font-weight: 700; opacity: 0.9; text-uppercase; letter-spacing: 1px;">Unit Capacity</div>
+                                    <div style="font-size: 0.7rem; font-weight: 700; opacity: 0.9; text-uppercase; letter-spacing: 1px;">Estimated Size</div>
                                 </div>
 
-                                <!-- Length Label (Parallel to Left Edge) -->
-                                <div style="position: absolute; bottom: 15%; left: 10%; width: 50%; display: flex; flex-direction: column; align-items: center; transform: rotate(26deg);">
-                                    <div id="sf-hud-len" style="font-size: 1.3rem; font-weight: 800; color: #111; margin-bottom: 0.5rem; text-shadow: 0 2px 4px rgba(255,255,255,0.8);"></div>
-                                    <div style="width: 100%; height: 1px; border-top: 2px dashed #999;"></div>
+                                <!-- Length Label (Left Edge Alignment) -->
+                                <div style="position: absolute; bottom: 18%; left: 10%; width: 50%; display: flex; flex-direction: column; align-items: center; transform: rotate(23deg);">
+                                    <div id="sf-hud-len" style="font-size: 1.4rem; font-weight: 900; color: #111; margin-bottom: 0.5rem; letter-spacing: -0.5px;"></div>
+                                    <div style="width: 100%; height: 2px; border-top: 2px dashed #bbb;"></div>
                                 </div>
 
-                                <!-- Width Label (Parallel to Right Edge) -->
-                                <div style="position: absolute; bottom: 25%; right: 5%; width: 35%; display: flex; flex-direction: column; align-items: center; transform: rotate(-30deg);">
-                                    <div id="sf-hud-wid" style="font-size: 1.3rem; font-weight: 800; color: #111; margin-bottom: 0.5rem; text-shadow: 0 2px 4px rgba(255,255,255,0.8);"></div>
-                                    <div style="width: 100%; height: 1px; border-top: 2px dashed #999;"></div>
+                                <!-- Width Label (Right Edge Alignment) -->
+                                <div style="position: absolute; bottom: 28%; right: 5%; width: 35%; display: flex; flex-direction: column; align-items: center; transform: rotate(-28deg);">
+                                    <div id="sf-hud-wid" style="font-size: 1.4rem; font-weight: 900; color: #111; margin-bottom: 0.5rem; letter-spacing: -0.5px;"></div>
+                                    <div style="width: 100%; height: 2px; border-top: 2px dashed #bbb;"></div>
+                                </div>
+
+                                <!-- Disclaimer -->
+                                <div style="position: absolute; bottom: 1rem; left: 50%; transform: translateX(-50%); font-size: 0.7rem; font-weight: 700; color: #999; text-uppercase; letter-spacing: 1px; opacity: 0.6;">
+                                    * Visualization shows estimated proportions
                                 </div>
                             </div>
                         </div>
@@ -251,7 +256,7 @@
                 <div id="sf-empty" style="text-align: center; padding: 6rem 2rem; color: var(--dark-grey);">
                     <i class="fas fa-expand-arrows-alt" style="font-size: 2rem; color: var(--primary-blue); margin-bottom: 1.5rem; opacity: 0.3;"></i>
                     <h3 style="color: #1a1a1a; font-weight: 800; margin-bottom: 0.5rem;">Select a unit size</h3>
-                    <p>Get an isometric preview of your storage space</p>
+                    <p>Proportions shown are estimated for visual guidance</p>
                 </div>
             </div>
         </section>
