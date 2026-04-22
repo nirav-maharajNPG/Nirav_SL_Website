@@ -203,7 +203,7 @@
                     <button class="sf-scroll-btn" onclick="sfScroll(-200)" aria-label="Scroll Left"><i class="fas fa-chevron-left"></i></button>
                     
                     <div id="sf-chips-container" style="flex: 1; overflow-x: auto; scroll-behavior: smooth; display: flex; gap: 0.8rem; padding: 1.5rem 0.5rem; -ms-overflow-style: none; scrollbar-width: none;">
-                        <!-- Chips will be rendered here -->
+                        <!-- Chips rendered here -->
                     </div>
 
                     <button class="sf-scroll-btn" onclick="sfScroll(200)" aria-label="Scroll Right"><i class="fas fa-chevron-right"></i></button>
@@ -215,25 +215,25 @@
                         <!-- Isometric Visualizer -->
                         <div style="background: white; position: relative; display: flex; align-items: center; justify-content: center; overflow: hidden; padding: 1rem; border-right: 1px solid #f0f0f0;">
                             <!-- 3D Base Image -->
-                            <img id="sf-3d-image" src="" alt="3D Storage Unit" style="width: 100%; height: auto; display: block; filter: contrast(1.05);">
+                            <img id="sf-3d-image" src="" alt="3D Storage Unit" style="width: 100%; height: auto; display: block;">
                             
-                            <!-- Isometric Dimension Labels (HUD) -->
+                            <!-- Isometric Dimension Labels (Parallel to edges) -->
                             <div style="position: absolute; inset: 0; pointer-events: none;">
                                 <!-- Area Label (Top Corner) -->
-                                <div style="position: absolute; top: 2rem; left: 2rem; background: var(--primary-blue); color: white; padding: 0.8rem 1.5rem; border-radius: 16px; box-shadow: 0 10px 20px rgba(0,80,255,0.2); animation: sfPop 0.5s ease;">
+                                <div style="position: absolute; top: 2rem; left: 2rem; background: var(--primary-blue); color: white; padding: 0.8rem 1.5rem; border-radius: 16px; box-shadow: 0 10px 20px rgba(0,80,255,0.2);">
                                     <div id="sf-hud-area" style="font-size: 1.8rem; font-weight: 900; line-height: 1;"></div>
                                     <div style="font-size: 0.7rem; font-weight: 700; opacity: 0.9; text-uppercase; letter-spacing: 1px;">Unit Capacity</div>
                                 </div>
 
-                                <!-- Length Label (Bottom Dashed) -->
-                                <div style="position: absolute; bottom: 15%; left: 15%; width: 55%; display: flex; flex-direction: column; align-items: center;">
-                                    <div id="sf-hud-len" style="font-size: 1.2rem; font-weight: 700; color: #333; margin-bottom: 0.5rem;"></div>
+                                <!-- Length Label (Parallel to Left Edge) -->
+                                <div style="position: absolute; bottom: 15%; left: 10%; width: 50%; display: flex; flex-direction: column; align-items: center; transform: rotate(26deg);">
+                                    <div id="sf-hud-len" style="font-size: 1.3rem; font-weight: 800; color: #111; margin-bottom: 0.5rem; text-shadow: 0 2px 4px rgba(255,255,255,0.8);"></div>
                                     <div style="width: 100%; height: 1px; border-top: 2px dashed #999;"></div>
                                 </div>
 
-                                <!-- Width Label (Right Dashed) -->
-                                <div style="position: absolute; bottom: 25%; right: 5%; width: 30%; display: flex; flex-direction: column; align-items: center; transform: rotate(-30deg);">
-                                    <div id="sf-hud-wid" style="font-size: 1.2rem; font-weight: 700; color: #333; margin-bottom: 0.5rem;"></div>
+                                <!-- Width Label (Parallel to Right Edge) -->
+                                <div style="position: absolute; bottom: 25%; right: 5%; width: 35%; display: flex; flex-direction: column; align-items: center; transform: rotate(-30deg);">
+                                    <div id="sf-hud-wid" style="font-size: 1.3rem; font-weight: 800; color: #111; margin-bottom: 0.5rem; text-shadow: 0 2px 4px rgba(255,255,255,0.8);"></div>
                                     <div style="width: 100%; height: 1px; border-top: 2px dashed #999;"></div>
                                 </div>
                             </div>
@@ -242,18 +242,13 @@
                         <!-- Info Column -->
                         <div style="padding: 4rem; display: flex; flex-direction: column; justify-content: center; background: #fafbfc;">
                             <div style="margin-bottom: 2.5rem;">
-                                <div id="sf-fits-icon" style="font-size: 3.5rem; margin-bottom: 1.5rem; filter: grayscale(0.2);"></div>
-                                <h3 id="sf-fits-title" style="font-size: 2rem; font-weight: 800; color: #1a1a1a; margin-bottom: 1rem; line-height: 1.2;"></h3>
+                                <div id="sf-fits-icon" style="font-size: 3.5rem; margin-bottom: 1.5rem;"></div>
+                                <h3 id="sf-fits-title" style="font-size: 2rem; font-weight: 800; color: #1a1a1a; margin-bottom: 1rem;"></h3>
                                 <p id="sf-fits-desc" style="color: #4b5563; line-height: 1.8; font-size: 1.1rem; margin-bottom: 2.5rem;"></p>
                                 <div id="sf-fits-tags" style="display: flex; flex-wrap: wrap; gap: 0.6rem;"></div>
                             </div>
-                            
                             <div style="padding-top: 2.5rem; border-top: 1px solid #e5e7eb; display: flex; align-items: center; justify-content: space-between;">
-                                <div style="display: flex; flex-direction: column;">
-                                    <span style="font-size: 0.75rem; font-weight: 700; color: #6b7280; text-uppercase; letter-spacing: 1px;">Ready to Book?</span>
-                                    <span style="font-size: 1rem; color: #111827; font-weight: 600;">Enquire for pricing</span>
-                                </div>
-                                <a href="contact.html" class="btn btn-primary" style="padding: 1.2rem 2.5rem; border-radius: 16px; font-weight: 800; box-shadow: 0 10px 25px rgba(0,100,255,0.2);">Contact Us</a>
+                                <a href="contact.html" class="btn btn-primary" style="padding: 1.2rem 2.5rem; border-radius: 16px; font-weight: 800;">Contact Us</a>
                             </div>
                         </div>
                     </div>
@@ -261,11 +256,9 @@
 
                 <!-- Empty state -->
                 <div id="sf-empty" style="text-align: center; padding: 6rem 2rem; color: var(--dark-grey);">
-                    <div style="width: 80px; height: 80px; background: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 2rem; box-shadow: 0 10px 30px rgba(0,0,0,0.05);">
-                        <i class="fas fa-expand-arrows-alt" style="font-size: 2rem; color: var(--primary-blue);"></i>
-                    </div>
+                    <i class="fas fa-expand-arrows-alt" style="font-size: 2rem; color: var(--primary-blue); margin-bottom: 1.5rem; opacity: 0.3;"></i>
                     <h3 style="color: #1a1a1a; font-weight: 800; margin-bottom: 0.5rem;">Select a unit size</h3>
-                    <p style="font-size: 1.1rem;">Click on any size above to see the isometric space preview</p>
+                    <p>Get an isometric preview of your storage space</p>
                 </div>
             </div>
         </section>
@@ -276,18 +269,14 @@
             .sf-cat-btn:hover { border-color: var(--primary-blue); color: var(--primary-blue); transform: translateY(-4px); box-shadow: 0 15px 35px rgba(0,0,0,0.08); }
             .sf-cat-active { background: var(--primary-blue) !important; color: white !important; border-color: var(--primary-blue) !important; box-shadow: 0 20px 40px rgba(0,80,255,0.3); }
             .sf-cat-sub { font-size: 0.8rem; font-weight: 500; opacity: 0.9; margin-top: 0.3rem; }
-            
             #sf-chips-container::-webkit-scrollbar { display: none; }
             .sf-chip { flex: 0 0 auto; padding: 0.9rem 1.8rem; border: 2px solid #e5e7eb; background: white; border-radius: 50px; cursor: pointer; font-size: 1rem; font-weight: 700; color: #4b5563; transition: all 0.25s ease; }
             .sf-chip:hover { border-color: var(--primary-blue); color: var(--primary-blue); }
             .sf-chip-active { background: var(--primary-blue) !important; color: white !important; border-color: var(--primary-blue) !important; transform: scale(1.1); box-shadow: 0 8px 20px rgba(0,80,255,0.2); }
-            
             .sf-scroll-btn { background: white; border: 2px solid #e5e7eb; width: 48px; height: 48px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; color: #111827; transition: all 0.2s ease; flex-shrink: 0; box-shadow: 0 4px 15px rgba(0,0,0,0.05); z-index: 10; }
             .sf-scroll-btn:hover { background: var(--primary-blue); color: white; border-color: var(--primary-blue); transform: scale(1.1); }
-            
             .sf-tag { background: #f3f4f6; color: #374151; border-radius: 50px; padding: 0.5rem 1.2rem; font-size: 0.9rem; font-weight: 700; border: 1px solid #e5e7eb; }
-            @keyframes sfPop { 0% { transform: scale(0.8); opacity: 0; } 100% { transform: scale(1); opacity: 1; } }
-            @media (max-width: 900px) { #sf-result > div { grid-template-columns: 1fr !important; } #sf-result > div > div:first-child { border-right: none; border-bottom: 1px solid #f0f0f0; } }
+            @media (max-width: 900px) { #sf-result > div { grid-template-columns: 1fr !important; } }
         </style>
 
         <script>
