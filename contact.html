@@ -60,8 +60,7 @@
     </style>
 </head>
 <body class="other-page">
-        <nav class="navbar" id="navbar">
-        <nav class="navbar" id="navbar">
+    <nav class="navbar navbar-blue" id="navbar">
         <a href="index.html" class="nav-logo">
             <img src="assets/Storage Locker/storagelockerlogo.png" alt="Storage Locker Logo" fetchpriority="high">
         </a>
@@ -96,8 +95,6 @@
             <a href="contact.html" class="btn btn-primary">Find Storage Nearby</a>
         </div>
     </nav>
-        </div>
-    </nav>
 
     <main>
         <section class="section" style="background-color: var(--white); min-height: 80vh; display: flex; flex-direction: column; align-items: center; padding-top: 150px;">
@@ -127,28 +124,28 @@
                         <input type="hidden" name="Location" id="hidden-location" value="">
 
                         <div class="form-group" style="margin-bottom: 1.5rem;">
-                            <label class="form-label" style="display: block; font-weight: 600; margin-bottom: 0.5rem; text-transform: uppercase; font-size: 0.75rem;">Full Name *</label>
-                            <input type="text" name="name" class="form-input" style="width: 100%; padding: 1rem; border: 1px solid #ddd; outline: none; font-family: var(--font-body);" required>
+                            <label class="form-label">Full Name *</label>
+                            <input type="text" name="name" class="form-input" required>
                         </div>
                         
                         <div class="form-group" style="margin-bottom: 1.5rem;">
-                            <label class="form-label" style="display: block; font-weight: 600; margin-bottom: 0.5rem; text-transform: uppercase; font-size: 0.75rem;">Email Address *</label>
-                            <input type="email" name="email" class="form-input" style="width: 100%; padding: 1rem; border: 1px solid #ddd; outline: none; font-family: var(--font-body);" required>
+                            <label class="form-label">Email Address *</label>
+                            <input type="email" name="email" class="form-input" required>
                         </div>
 
                         <div class="form-group" style="margin-bottom: 1.5rem;">
-                            <label class="form-label" style="display: block; font-weight: 600; margin-bottom: 0.5rem; text-transform: uppercase; font-size: 0.75rem;">Phone Number *</label>
-                            <input type="tel" name="phone" class="form-input" style="width: 100%; padding: 1rem; border: 1px solid #ddd; outline: none; font-family: var(--font-body);" required>
+                            <label class="form-label">Phone Number *</label>
+                            <input type="tel" name="phone" class="form-input" required>
                         </div>
 
                         <div class="form-group" style="margin-bottom: 1.5rem;">
-                            <label class="form-label" style="display: block; font-weight: 600; margin-bottom: 0.5rem; text-transform: uppercase; font-size: 0.75rem;">Subject *</label>
-                            <input type="text" name="subject" value="Storage Enquiry" class="form-input" style="width: 100%; padding: 1rem; border: 1px solid #ddd; outline: none; font-family: var(--font-body);" required>
+                            <label class="form-label">Subject *</label>
+                            <input type="text" name="subject" value="Storage Enquiry" class="form-input" required>
                         </div>
 
                         <div class="form-group" style="margin-bottom: 2rem;">
-                            <label class="form-label" style="display: block; font-weight: 600; margin-bottom: 0.5rem; text-transform: uppercase; font-size: 0.75rem;">Message *</label>
-                            <textarea name="message" class="form-input" style="width: 100%; padding: 1rem; border: 1px solid #ddd; outline: none; font-family: var(--font-body); height: 120px;" required></textarea>
+                            <label class="form-label">Message *</label>
+                            <textarea name="message" class="form-input" style="height: 120px;" required></textarea>
                         </div>
 
                         <button id="submit-btn" type="submit" class="btn btn-primary" style="width: 100%; padding: 1.25rem; font-size: 1.1rem;">Send Enquiry</button>
@@ -197,44 +194,44 @@
     <script>
         const branchData = {
             "Wynberg": {
-                address: "Chadwick Ave, Wynberg, 2090",
-                phone: "011 052 1800",
-                phoneHref: "tel:+27110521800",
-                whatsapp: "011 052 1800",
-                whatsappHref: "https://wa.me/27110521800",
-                email: "info@storagelocker.co.za",
-                formEmail: "info@storagelocker.co.za",
+                address: "5th Street, Wynberg, Sandton, 2090",
+                phone: "081 821 3232",
+                phoneHref: "tel:+27818213232",
+                whatsapp: "081 821 3232",
+                whatsappHref: "https://wa.me/27818213232",
+                email: "5thstreet@storagelocker.co.za",
+                formEmail: "5thstreet@storagelocker.co.za",
                 mapSrc: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3581.4423773173!2d28.077676674322964!3d-26.10188687713437!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1e9573b3595dca3b%3A0xd21f3829b70bf0d6!2sDynamic%20Workspaces%20Wynberg%20Sandton!5e0!3m2!1sen!2sza!4v1775741908985"
             },
             "Sandton": {
-                address: "Chadwick Ave, Wynberg, 2090",
-                phone: "011 052 1800",
-                phoneHref: "tel:+27110521800",
-                whatsapp: "011 052 1800",
-                whatsappHref: "https://wa.me/27110521800",
-                email: "info@storagelocker.co.za",
-                formEmail: "info@storagelocker.co.za",
+                address: "1 Chadwick Avenue, Wynberg, Sandton, 2090",
+                phone: "011 052 5562",
+                phoneHref: "tel:+27110525562",
+                whatsapp: "079 210 5562",
+                whatsappHref: "https://wa.me/27792105562",
+                email: "chadwickavenue@dynamicworkspaces.co.za",
+                formEmail: "chadwickavenue@dynamicworkspaces.co.za",
                 mapSrc: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3581.4423773173!2d28.077676674322964!3d-26.10188687713437!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1e9573b3595dca3b%3A0xd21f3829b70bf0d6!2sDynamic%20Workspaces%20Wynberg%20Sandton!5e0!3m2!1sen!2sza!4v1775741908985"
             },
             "Johannesburg CBD": {
-                address: "Village Road, Selby, JHB",
-                phone: "011 044 9400",
-                phoneHref: "tel:+27110449400",
-                whatsapp: "079 360 0468",
-                whatsappHref: "https://wa.me/27793600468",
-                email: "info@storagelocker.co.za",
-                formEmail: "info@storagelocker.co.za",
-                mapSrc: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3579.5402779096453!2d28.037447174326132!3d-26.211629077072!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1e950f0184d64105%3A0x882841796d5dd597!2sDynamic%20Workspaces%20Selby%20JHB!5e0!3m2!1sen!2sza!4v1775806524263"
+                address: "Heidelberg Road, Johannesburg",
+                phone: "071 409 8418",
+                phoneHref: "tel:+27714098418",
+                whatsapp: "071 409 8418",
+                whatsappHref: "https://wa.me/27714098418",
+                email: "heidelbergroad@storagelocker.co.za",
+                formEmail: "heidelbergroad@storagelocker.co.za",
+                mapSrc: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3579.5484770210332!2d28.052662599999998!3d-26.2113625!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1e950f5c4d2d8a95%3A0x5992595173151ae8!2sStorage%20Locker%20-%20Joburg%20CBD!5e0!3m2!1sen!2sza!4v1776848302481!5m2!1sen!2sza"
             },
             "Vereeniging": {
-                address: "Vereeniging Central, Gauteng",
-                phone: "011 052 1800",
-                phoneHref: "tel:+27110521800",
-                whatsapp: "011 052 1800",
-                whatsappHref: "https://wa.me/27110521800",
-                email: "info@storagelocker.co.za",
-                formEmail: "info@storagelocker.co.za",
-                mapSrc: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3568.172658428581!2d27.915!3d-26.67!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjbCsDQwJzEyLjAiUyAyN8KwNTQnNTQuMCJF!5e0!3m2!1sen!2sza!4v1775806524263"
+                address: "Leeuwenhoek Street, Vereeniging",
+                phone: "016 422 8892",
+                phoneHref: "tel:+27164228892",
+                whatsapp: "079 568 0869",
+                whatsappHref: "https://wa.me/27795680869",
+                email: "leeuwenhoekstreet@storagelocker.co.za",
+                formEmail: "leeuwenhoekstreet@storagelocker.co.za",
+                mapSrc: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3565.7419174826728!2d27.937590300000004!3d-26.656744499999995!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1e94f789ee2717b1%3A0x74add0d61861d37e!2sStorage%20Locker%20Vereeniging!5e0!3m2!1sen!2sza!4v1776848261676!5m2!1sen!2sza"
             }
         };
 
@@ -255,7 +252,6 @@
 
         let currentFormEmail = '';
 
-        // Pre-select based on URL parameter (e.g. ?location=Morningside)
         const urlParams = new URLSearchParams(window.location.search);
         const presetLoc = urlParams.get('location');
 
@@ -276,7 +272,6 @@
             const branch = branchData[loc];
             if (!branch) return;
 
-            // Update branch details displayed
             formLocationTitle.textContent = `Enquire for ${loc} Branch`;
             hiddenLocationInput.value = loc;
             branchAddress.textContent = branch.address;
@@ -287,20 +282,16 @@
             branchEmailLink.textContent = branch.email;
             branchEmailLink.href = `mailto:${branch.email}`;
 
-            // Store the email target for form submission
             currentFormEmail = branch.formEmail;
 
-            // Update map
             if (branchMapIframe) {
                 branchMapIframe.src = branch.mapSrc;
                 branchMapSection.style.display = 'block';
             }
 
-            // Show form
             formContainer.style.display = 'block';
             branchDetails.style.display = 'block';
 
-            // Re-flow triggering for animation
             setTimeout(() => {
                 formContainer.style.opacity = '1';
                 formContainer.style.transform = 'translateY(0)';
@@ -365,10 +356,10 @@
                             <i class="fas fa-map-marker-alt"></i> 1 Chadwick Avenue, Wynberg, Sandton, 2090
                         </div>
                         <div class="footer-contact-item">
-                            <i class="fas fa-phone"></i> 011 052 1800
+                            <i class="fas fa-phone"></i> 011 052 5562
                         </div>
                         <div class="footer-contact-item">
-                            <i class="fas fa-envelope"></i> info@storagelocker.co.za
+                            <i class="fas fa-envelope"></i> chadwickavenue@dynamicworkspaces.co.za
                         </div>
                     </div>
                 </div>
@@ -415,9 +406,3 @@
 <a href="https://wa.me/27792105562?text=Hi,%20I%20am%20interested%20in%20your%20workspaces." class="whatsapp-float-btn" target="_blank" title="Chat with us"><i class="fab fa-whatsapp"></i></a>
 </body>
 </html>
-
-
-
-
-
-
