@@ -537,10 +537,13 @@ button, input, select, textarea {
 
 @media (max-width: 480px) {
     .hero-title, .angled-hero-heading {
-        font-size: 1.8rem; /* Reverted from 2.5rem */
+        font-size: 1.8rem;
+        line-height: 1.2;
+        margin-bottom: 1.5rem;
     }
     .section-title {
-        font-size: 2rem !important;
+        font-size: 1.8rem !important;
+        line-height: 1.25 !important;
     }
     .hero-right, .angled-hero-right {
         padding: 1rem !important;
@@ -597,7 +600,7 @@ button, input, select, textarea {
 
 .trustbar-grid {
     display: grid;
-    grid-template-columns: repeat(6, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     gap: 2rem;
     align-items: center;
 }
@@ -2301,3 +2304,46 @@ button, input, select, textarea {
 
 
 
+
+/* Footer Grid Responsive */
+.footer-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 4rem;
+}
+
+@media (max-width: 1024px) {
+    .footer-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 3rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        text-align: center;
+    }
+    .footer-column {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .footer-links {
+        text-align: center;
+    }
+    .social-links {
+        justify-content: center;
+    }
+} 
+
+/* Mobile Spacing Fixes */
+@media (max-width: 768px) {
+    .section { padding: 4rem 0 !important; }
+    .section-title-wrap { margin-bottom: 3rem !important; }
+    .container { padding: 0 1.5rem !important; }
+    .navbar { padding: 1rem 1.5rem !important; }
+    .nav-logo img { height: 70px !important; }
+    .navbar.scrolled .nav-logo img { height: 50px !important; }
+} 
