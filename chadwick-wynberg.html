@@ -202,7 +202,7 @@
                 <div style="position: relative; max-width: 1000px; margin: 0 auto 3rem; display: flex; align-items: center;">
                     <button class="sf-scroll-btn" onclick="sfScroll(-200)" aria-label="Scroll Left"><i class="fas fa-chevron-left"></i></button>
                     
-                    <div id="sf-chips-container" style="flex: 1; overflow-x: auto; scroll-behavior: smooth; display: flex; gap: 0.8rem; padding: 1rem 0.5rem; -ms-overflow-style: none; scrollbar-width: none;">
+                    <div id="sf-chips-container" style="flex: 1; overflow-x: auto; scroll-behavior: smooth; display: flex; gap: 0.8rem; padding: 1.5rem 0.5rem; -ms-overflow-style: none; scrollbar-width: none;">
                         <!-- Chips will be rendered here -->
                     </div>
 
@@ -231,9 +231,6 @@
                                     <div style="flex: 1; width: 2px; background: linear-gradient(to top, transparent, rgba(255,255,255,0.5));"></div>
                                 </div>
                             </div>
-                            <div style="position: absolute; bottom: 1.5rem; right: 1.5rem; background: rgba(0,0,0,0.5); color: white; padding: 0.5rem 1rem; border-radius: 50px; font-size: 0.7rem; font-weight: 700; backdrop-filter: blur(4px);">
-                                <i class="fas fa-cube" style="margin-right: 0.4rem; color: #60a5fa;"></i>3D VISUALIZATION
-                            </div>
                         </div>
                         <!-- Side Details -->
                         <div style="padding: 3.5rem; display: flex; flex-direction: column; justify-content: center;">
@@ -260,9 +257,9 @@
         </section>
 
         <style>
-            .sf-cat-btn { display: flex; flex-direction: column; align-items: center; padding: 1.2rem 2rem; border: 2px solid #dde4f7; background: white; border-radius: 20px; cursor: pointer; font-size: 1rem; font-weight: 700; color: var(--dark-grey); transition: all 0.3s ease; min-width: 160px; }
+            .sf-cat-btn { display: flex; flex-direction: column; align-items: center; padding: 1.2rem 2rem; border: 2px solid #dde4f7; background: white; border-radius: 20px; cursor: pointer; font-size: 1rem; font-weight: 700; color: var(--dark-grey); transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); min-width: 160px; }
             .sf-cat-btn:hover { border-color: var(--primary-blue); color: var(--primary-blue); transform: translateY(-3px); }
-            .sf-cat-active { background: var(--primary-blue) !important; color: white !important; border-color: var(--primary-blue) !important; box-shadow: 0 10px 25px rgba(0,80,255,0.2); }
+            .sf-cat-active { background: var(--primary-blue) !important; color: white !important; border-color: var(--primary-blue) !important; box-shadow: 0 10px 25px rgba(0,80,255,0.2); transform: scale(1.05); }
             .sf-cat-sub { font-size: 0.75rem; font-weight: 400; opacity: 0.8; margin-top: 0.2rem; }
             
             #sf-chips-container::-webkit-scrollbar { display: none; }
@@ -270,7 +267,7 @@
             .sf-chip:hover { border-color: var(--primary-blue); color: var(--primary-blue); }
             .sf-chip-active { background: var(--primary-blue) !important; color: white !important; border-color: var(--primary-blue) !important; transform: scale(1.1); box-shadow: 0 5px 15px rgba(0,80,255,0.2); }
             
-            .sf-scroll-btn { background: white; border: 2px solid #dde4f7; width: 44px; height: 44px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; color: var(--primary-blue); transition: all 0.2s ease; flex-shrink: 0; box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
+            .sf-scroll-btn { background: white; border: 2px solid #dde4f7; width: 44px; height: 44px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; color: var(--primary-blue); transition: all 0.2s ease; flex-shrink: 0; box-shadow: 0 4px 12px rgba(0,0,0,0.05); z-index: 5; }
             .sf-scroll-btn:hover { background: var(--primary-blue); color: white; border-color: var(--primary-blue); transform: scale(1.1); }
             
             .sf-tag { background: #f0f7ff; color: var(--primary-blue); border-radius: 50px; padding: 0.4rem 1rem; font-size: 0.85rem; font-weight: 700; border: 1px solid #e0efff; }
@@ -329,37 +326,76 @@
             window.sfRenderChips = function() {
                 var container = document.getElementById('sf-chips-container');
                 if (!container) return;
-                var allChipsHtml = '';
-                
+                var html = '';
                 ['small', 'medium', 'large'].forEach(function(cat) {
                     SF_DATA[cat].sizes.forEach(function(s) {
-                        allChipsHtml += '<button class="sf-chip" data-cat="' + cat + '" id="chip-' + s.m + '" onclick="sfSelectSize(' + s.m + ', \'' + cat + '\')">' + s.m + ' m\u00b2</button>';
+                        html += '<button class="sf-chip" data-cat="' + cat + '" id="chip-' + s.m + '" onclick="sfSelectSize(' + s.m + ', \'' + cat + '\', true)">' + s.m + ' m\u00b2</button>';
                     });
                 });
+                container.innerHTML = html;
                 
-                container.innerHTML = allChipsHtml;
+                // Add Scroll Listener for auto-category highlighting
+                container.addEventListener('scroll', sfHandleScroll);
             };
 
+            var sfIsScrollingManually = false;
+            var sfScrollTimer = null;
+
             window.sfScroll = function(offset) {
-                document.getElementById('sf-chips-container').scrollBy({ left: offset, behavior: 'smooth' });
+                sfIsScrollingManually = true;
+                var container = document.getElementById('sf-chips-container');
+                container.scrollBy({ left: offset, behavior: 'smooth' });
+                clearTimeout(sfScrollTimer);
+                sfScrollTimer = setTimeout(function() { sfIsScrollingManually = false; }, 600);
             };
 
             window.sfJumpToCat = function(cat) {
+                sfIsScrollingManually = true;
                 var firstChip = document.querySelector('.sf-chip[data-cat="' + cat + '"]');
                 if (firstChip) {
                     firstChip.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
-                    // Optionally click the first one
                     firstChip.click();
                 }
+                clearTimeout(sfScrollTimer);
+                sfScrollTimer = setTimeout(function() { sfIsScrollingManually = false; }, 1000);
             };
 
-            window.sfSelectSize = function(m, cat) {
-                // Update highlight for chips
+            function sfHandleScroll() {
+                var container = document.getElementById('sf-chips-container');
+                var chips = container.querySelectorAll('.sf-chip');
+                var containerCenter = container.scrollLeft + (container.offsetWidth / 2);
+                
+                var closestChip = null;
+                var minDiff = Infinity;
+
+                chips.forEach(function(chip) {
+                    var chipCenter = chip.offsetLeft + (chip.offsetWidth / 2);
+                    var diff = Math.abs(containerCenter - chipCenter);
+                    if (diff < minDiff) {
+                        minDiff = diff;
+                        closestChip = chip;
+                    }
+                });
+
+                if (closestChip) {
+                    var cat = closestChip.getAttribute('data-cat');
+                    // Only update category highlights, don't trigger selection logic to avoid jumping
+                    document.querySelectorAll('.sf-cat-btn').forEach(function(b) { 
+                        b.classList.toggle('sf-cat-active', b.id === 'cat-' + cat); 
+                    });
+                }
+            }
+
+            window.sfSelectSize = function(m, cat, scrollIntoView) {
                 document.querySelectorAll('.sf-chip').forEach(function(c) { c.classList.remove('sf-chip-active'); });
                 var activeChip = document.getElementById('chip-' + m);
-                if (activeChip) activeChip.classList.add('sf-chip-active');
+                if (activeChip) {
+                    activeChip.classList.add('sf-chip-active');
+                    if (scrollIntoView) {
+                        activeChip.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+                    }
+                }
 
-                // Update highlight for categories
                 document.querySelectorAll('.sf-cat-btn').forEach(function(b) { b.classList.remove('sf-cat-active'); });
                 document.getElementById('cat-' + cat).classList.add('sf-cat-active');
 
