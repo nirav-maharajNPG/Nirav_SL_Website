@@ -320,34 +320,37 @@
             submitBtn.style.opacity = '0.7';
 
             const formData = new FormData(contactForm);
-            const object = {};
-            formData.forEach((value, key) => object[key] = value);
-            const json = JSON.stringify(object);
 
             fetch(`https://formsubmit.co/ajax/${currentFormEmail}`, {
                 method: "POST",
                 headers: {
-                    "Content-Type": "application/json",
                     "Accept": "application/json"
                 },
-                body: json
+                body: formData
             })
-            .then(response => response.json())
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
             .then(data => {
-                if(data.success === "true" || data.success === true) {
+                // FormSubmit returns success as a boolean or string "true"
+                if(data.success === "true" || data.success === true || data.status === "success") {
                     contactForm.style.display = 'none';
                     successMsg.style.display = 'block';
                     branchDetails.style.marginTop = '2rem';
                     window.scrollTo({ top: formContainer.offsetTop - 150, behavior: 'smooth' });
                 } else {
-                    alert('There was an error sending your enquiry. Please try again.');
+                    console.error('FormSubmit Error:', data);
+                    alert('There was an error sending your enquiry: ' + (data.message || 'Please try again.'));
                     submitBtn.textContent = 'Send Enquiry';
                     submitBtn.style.opacity = '1';
                 }
             })
             .catch(error => {
-                console.error('Error:', error);
-                alert('We encountered a connection error. Please email us directly.');
+                console.error('Fetch Error:', error);
+                alert('We encountered a connection error. Please email us directly at ' + currentFormEmail);
                 submitBtn.textContent = 'Send Enquiry';
                 submitBtn.style.opacity = '1';
             });
