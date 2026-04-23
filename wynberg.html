@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Storage Locker | Secure Self-Storage Wynberg</title>
-    <meta name="description" content="Safe, flexible, and affordable self-storage lockers in Wynberg. Secure units for home or business storage with 24/7 access.">
+    <meta name="description" content="Safe, flexible, and affordable self-storage Locker in Wynberg. Secure units for home or business storage with 24/7 access.">
     <link rel="canonical" href="https://www.rentapilot.co.za/DWS/chadwick-wynberg.html">
     <script type="application/ld+json">
     {
@@ -72,7 +72,7 @@
             <div class="angled-hero-left">
                 <div class="angled-hero-content">
                     <span class="section-tag text-uppercase">Secure Units</span>
-                    <h1 class="angled-hero-heading">Self-storage lockers in <br><span class="gradient-text">WYNBERG</span></h1>
+                    <h1 class="angled-hero-heading">Self-storage Locker in <span class="gradient-text">Wynberg</span></h1>
                     <p class="angled-hero-subtext">Safe, accessible, and affordable storage units in Wynberg. Ideal for business stock and personal belongings.</p>
                     <div class="hero-actions">
                         <a href="contact.html" class="btn btn-primary">Find Storage Nearby</a>
@@ -89,7 +89,7 @@
         <section class="section" id="storage-solutions">
             <div class="container">
                 <div class="section-header" style="text-align: center; margin-bottom: 4rem;">
-                    <span class="section-tag text-uppercase">Wynberg self-storage locker units</span>
+                    <span class="section-tag text-uppercase">Wynberg self-storage Locker units</span>
                     <h2 class="section-title" style="margin: 0 auto;">Storage Solutions with Storage Locker</h2>
                     <p style="margin-top: 1.5rem; color: var(--primary-blue); font-weight: 600; font-size: 1.1rem;">Wynberg, 22 5th St, Wynberg, Sandton, 2090</p>
                 </div>
@@ -129,37 +129,7 @@
             </div>
         </section>
 
-        <!-- Price Calculator Section -->
-        <section class="section" id="calculator" style="background-color: var(--white);">
-            <div class="container">
-                <div class="section-header" style="text-align: center; margin-bottom: 3rem;">
-                    <span class="section-tag text-uppercase">Pricing</span>
-                    <h2 class="section-title" style="margin: 0 auto;">Price Calculator</h2>
-                    <p style="margin-top: 1rem; color: var(--dark-grey);">Calculate your monthly storage cost based on unit size (R118.25 per m²).</p>
-                </div>
-                
-                <div style="max-width: 600px; margin: 0 auto; background: var(--light-grey); padding: 3rem; border-radius: 20px; box-shadow: var(--shadow);">
-                    <div style="margin-bottom: 2.5rem;">
-                        <label for="sizeInput" style="display: block; margin-bottom: 1rem; font-weight: 600; color: var(--black);">Enter Size (m²):</label>
-                        <div style="position: relative;">
-                            <input type="number" id="sizeInput" min="3" max="142" value="3" style="width: 100%; padding: 1.2rem; border-radius: 12px; border: 2px solid #ddd; font-size: 1.2rem; outline: none; transition: border-color 0.3s;" oninput="calculatePrice()">
-                            <span style="position: absolute; right: 20px; top: 50%; transform: translateY(-50%); color: var(--dark-grey); font-weight: 500;">m²</span>
-                        </div>
-                        <p style="margin-top: 0.8rem; font-size: 0.9rem; color: var(--dark-grey);">Range: 3m² to 142m²</p>
-                    </div>
-                    
-                    <div style="background: var(--white); padding: 2rem; border-radius: 12px; text-align: center;">
-                        <p style="font-size: 1rem; color: var(--dark-grey); margin-bottom: 0.5rem;">Estimated Monthly Price:</p>
-                        <div style="font-size: 2.5rem; font-weight: 800; color: var(--primary-blue); margin-bottom: 0.5rem;" id="calcResult">R354.75</div>
-                        <p class="vat-text" style="font-size: 0.9rem;">*Excluding VAT</p>
-                    </div>
 
-                    <div style="margin-top: 2.5rem; text-align: center;">
-                        <a href="contact.html" class="btn btn-primary" style="width: 100%;">Book This Unit</a>
-                    </div>
-                </div>
-            </div>
-        </section>
 
 
         <!-- ===== SIZE FINDER SECTION ===== -->
@@ -690,27 +660,7 @@
             }, 6500);
         });
         // Price Calculator Logic
-        function calculatePrice() {
-            const size = document.getElementById('sizeInput').value;
-            const result = document.getElementById('calcResult');
-            const rate = 118.25;
-            
-            if (size >= 3 && size <= 142) {
-                const price = (size * rate).toLocaleString('en-ZA', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
-                result.textContent = 'R' + price;
-                result.style.color = 'var(--primary-blue)';
-            } else if (size < 3) {
-                result.textContent = 'Min size: 3m²';
-                result.style.color = '#ef4444';
-            } else if (size > 142) {
-                result.textContent = 'Max size: 142m²';
-                result.style.color = '#ef4444';
-            } else if (size === "" || size === null) {
-                result.textContent = 'R0.00';
-                result.style.color = 'var(--primary-blue)';
-            }
-        }
-        window.addEventListener('load', calculatePrice);
+
     </script>
     <a href="https://wa.me/27792105562?text=Hi,%20I%20am%20interested%20in%20your%20workspaces." class="whatsapp-float-btn" target="_blank" title="Chat with us"><i class="fab fa-whatsapp"></i></a>
 </body>
