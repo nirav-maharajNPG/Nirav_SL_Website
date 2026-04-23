@@ -172,22 +172,6 @@
                     <p style="margin-top: 1rem; color: var(--dark-grey); max-width: 560px; margin-left: auto; margin-right: auto; font-size: 1.1rem;">Explore our storage options with a 3D isometric preview showing proportional dimensions.</p>
                 </div>
 
-                <!-- Category Navigation -->
-                <div style="display: flex; justify-content: center; gap: 0.8rem; flex-wrap: wrap; margin-bottom: 2rem; padding: 0 1rem;">
-                    <button id="cat-small" class="sf-cat-btn sf-cat-active" onclick="sfJumpToCat('small')">
-                        <i class="fas fa-box"></i>Small
-                        <span class="sf-cat-sub">3 – 15 m²</span>
-                    </button>
-                    <button id="cat-medium" class="sf-cat-btn" onclick="sfJumpToCat('medium')">
-                        <i class="fas fa-boxes"></i>Medium
-                        <span class="sf-cat-sub">16 – 40 m²</span>
-                    </button>
-                    <button id="cat-large" class="sf-cat-btn" onclick="sfJumpToCat('large')">
-                        <i class="fas fa-warehouse"></i>Large
-                        <span class="sf-cat-sub">42 – 142 m²</span>
-                    </button>
-                </div>
-
                 <!-- Size Carousel -->
                 <div class="sf-carousel-wrapper" style="position: relative; max-width: 1000px; margin: 0 auto 3rem; display: flex; align-items: center; padding: 0 0.5rem;">
                     <button class="sf-scroll-btn sf-scroll-left" onclick="sfScroll(-200)" aria-label="Scroll Left"><i class="fas fa-chevron-left"></i></button>
@@ -207,18 +191,6 @@
                                 <div class="sf-hud-badge">
                                     <div id="sf-hud-area"></div>
                                     <div class="sf-hud-badge-tag">Actual Size</div>
-                                </div>
-
-                                <!-- Width (Left Side - front face) -->
-                                <div class="sf-hud-line sf-hud-left" id="sf-hud-left-wrapper">
-                                    <div class="sf-hud-label" id="sf-hud-wid"></div>
-                                    <div class="sf-hud-connector"></div>
-                                </div>
-
-                                <!-- Length (Right Side - depth) -->
-                                <div class="sf-hud-line sf-hud-right" id="sf-hud-right-wrapper">
-                                    <div class="sf-hud-label" id="sf-hud-len"></div>
-                                    <div class="sf-hud-connector"></div>
                                 </div>
 
                                 <div class="sf-hud-disclaimer">* Visualization shows estimated proportions</div>
@@ -328,21 +300,7 @@
             };
 
             function sfHandleScroll() {
-                var container = document.getElementById('sf-chips-container');
-                var chips = container.querySelectorAll('.sf-chip');
-                var containerCenter = container.scrollLeft + (container.offsetWidth / 2);
-                var closestChip = null, minDiff = Infinity;
-                chips.forEach(function(chip) {
-                    var chipCenter = chip.offsetLeft + (chip.offsetWidth / 2);
-                    var diff = Math.abs(containerCenter - chipCenter);
-                    if (diff < minDiff) { minDiff = diff; closestChip = chip; }
-                });
-                if (closestChip) {
-                    var cat = closestChip.getAttribute('data-cat');
-                    document.querySelectorAll('.sf-cat-btn').forEach(function(b) { 
-                        b.classList.toggle('sf-cat-active', b.id === 'cat-' + cat); 
-                    });
-                }
+                // Category button updates removed
             }
 
             window.sfSelectSize = function(m, cat, scrollIntoView) {
@@ -352,8 +310,6 @@
                     activeChip.classList.add('sf-chip-active');
                     if (scrollIntoView) activeChip.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
                 }
-                document.querySelectorAll('.sf-cat-btn').forEach(function(b) { b.classList.remove('sf-cat-active'); });
-                document.getElementById('cat-' + cat).classList.add('sf-cat-active');
 
                 var sizeData = SF_DATA[cat].sizes.find(function(s) { return s.m === m; });
                 if (!sizeData) return;
@@ -363,21 +319,7 @@
                 resultEl.style.display = 'block';
                 
                 document.getElementById('sf-3d-image').src = SF_DATA[cat].image;
-                
-                // Proportional HUD Scaling: left=Width (front face), right=Length (depth)
-                var catRef = { small: {l:5, w:3}, medium: {l:7, w:5}, large: {l:15, w:9} };
-                var ref = catRef[cat];
-                var widPct = Math.min(Math.max((sizeData.w / ref.w) * 35 + 10, 12), 55);
-                var lenPct = Math.min(Math.max((sizeData.l / ref.l) * 45 + 10, 15), 65);
-
-                var leftWrapper = document.getElementById('sf-hud-left-wrapper');
-                var rightWrapper = document.getElementById('sf-hud-right-wrapper');
-                if (leftWrapper) leftWrapper.style.width = widPct + '%';
-                if (rightWrapper) rightWrapper.style.width = lenPct + '%';
-
                 document.getElementById('sf-hud-area').textContent = sizeData.m + ' m\u00b2';
-                document.getElementById('sf-hud-wid').textContent = sizeData.w + 'm';
-                document.getElementById('sf-hud-len').textContent = sizeData.l + 'm';
                 
                 document.getElementById('sf-fits-icon').textContent = sizeData.icon;
                 document.getElementById('sf-fits-title').textContent = sizeData.title;
