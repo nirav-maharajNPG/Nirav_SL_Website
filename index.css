@@ -1805,6 +1805,13 @@ button, input, select, textarea {
         background-attachment: scroll !important; /* Disable parallax on mobile for better visibility */
     }
 
+    /* Fix for background hero images on other pages */
+    .other-page .hero-image {
+        position: absolute !important;
+        height: 100% !important;
+        z-index: 0 !important;
+    }
+
     .hero-description {
         max-width: 700px !important;
         margin: 0 auto 3rem !important;
