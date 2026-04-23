@@ -208,6 +208,20 @@
                                     <div id="sf-hud-area"></div>
                                     <div class="sf-hud-badge-tag">Actual Size</div>
                                 </div>
+
+                                <!-- Width (Left Side - front face) -->
+                                <div class="sf-hud-line sf-hud-left" id="sf-hud-left-wrapper">
+                                    <div class="sf-hud-label" id="sf-hud-wid"></div>
+                                    <div class="sf-hud-connector"></div>
+                                </div>
+
+                                <!-- Length (Right Side - depth) -->
+                                <div class="sf-hud-line sf-hud-right" id="sf-hud-right-wrapper">
+                                    <div class="sf-hud-label" id="sf-hud-len"></div>
+                                    <div class="sf-hud-connector"></div>
+                                </div>
+
+                                <div class="sf-hud-disclaimer">* Visualization shows estimated proportions</div>
                             </div>
                         </div>
 
@@ -349,7 +363,21 @@
                 resultEl.style.display = 'block';
                 
                 document.getElementById('sf-3d-image').src = SF_DATA[cat].image;
+                
+                // Proportional HUD Scaling: left=Width (front face), right=Length (depth)
+                var catRef = { small: {l:5, w:3}, medium: {l:7, w:5}, large: {l:15, w:9} };
+                var ref = catRef[cat];
+                var widPct = Math.min(Math.max((sizeData.w / ref.w) * 35 + 10, 12), 55);
+                var lenPct = Math.min(Math.max((sizeData.l / ref.l) * 45 + 10, 15), 65);
+
+                var leftWrapper = document.getElementById('sf-hud-left-wrapper');
+                var rightWrapper = document.getElementById('sf-hud-right-wrapper');
+                if (leftWrapper) leftWrapper.style.width = widPct + '%';
+                if (rightWrapper) rightWrapper.style.width = lenPct + '%';
+
                 document.getElementById('sf-hud-area').textContent = sizeData.m + ' m\u00b2';
+                document.getElementById('sf-hud-wid').textContent = sizeData.w + 'm';
+                document.getElementById('sf-hud-len').textContent = sizeData.l + 'm';
                 
                 document.getElementById('sf-fits-icon').textContent = sizeData.icon;
                 document.getElementById('sf-fits-title').textContent = sizeData.title;
