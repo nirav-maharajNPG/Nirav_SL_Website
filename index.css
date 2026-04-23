@@ -140,37 +140,17 @@ button, input, select, textarea {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1.5rem 5%; /* More generous padding when transparent */
-    background: transparent; /* Completely transparent initially */
-    border-bottom: 1px solid transparent;
-    box-shadow: none;
+    padding: 0.8rem 5%; /* Solid padding */
+    background: #ffffff !important; /* Solid white always */
+    border-bottom: 2px solid var(--primary-blue);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.navbar.scrolled {
-    padding: 0.5rem 5%; /* Shrink on scroll */
-    background: #ffffff !important; /* Solid white to avoid overlay transparency issues */
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    border-bottom: 2px solid var(--primary-blue);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08); /* Sophisticated drop shadow */
-}
 
-.navbar.scrolled .nav-logo img {
-    height: 60px; /* Further reduce logo size on scroll to avoid overlapping text */
-}
 
-/* Subtle gloss reflection only when scrolled */
-.navbar.scrolled::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 1px;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.8), transparent);
-    z-index: 1001;
-    pointer-events: none;
+.navbar .nav-logo img {
+    height: 70px; /* Standard size */
 }
 
 .nav-links {
@@ -187,12 +167,7 @@ button, input, select, textarea {
     text-transform: uppercase;
     letter-spacing: 0.1em; /* More spacing for boldness */
     position: relative;
-    text-shadow: 0 1px 2px rgba(255, 255, 255, 0.5); /* Visibility on transparent backgrounds */
     transition: var(--transition);
-}
-
-.navbar.scrolled .nav-link {
-    text-shadow: none;
 }
 
 .nav-link::after {
@@ -231,7 +206,7 @@ button, input, select, textarea {
 }
 
 .nav-logo img {
-    height: 100px;
+    height: 70px;
     width: auto;
     object-fit: contain;
     display: block;
@@ -425,7 +400,7 @@ button, input, select, textarea {
     align-items: center;
     justify-content: center;
     text-align: center;
-    padding: 180px 0 120px; /* Increased top padding for nav, bottom for buttons */
+    padding: 130px 0 40px; /* Optimized padding for solid header */
     background: #ffffff;
     position: relative;
     overflow: visible !important;
@@ -641,7 +616,7 @@ button, input, select, textarea {
 
 /* Locations Section */
 .section {
-    padding: 10rem 0; /* Increased from 6rem to fix "squashed" section feel */
+    padding: 7rem 0; /* Balanced padding for cleaner layout */
     position: relative;
 }
 

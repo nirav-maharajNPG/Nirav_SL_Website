@@ -5,14 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const heroContent = document.querySelector('.hero-content');
     const heroImage = document.querySelector('.hero-image');
     
-    // Navbar Scroll Effect
-    window.addEventListener('scroll', () => {
-        if (window.scrollY > 100) {
-            navbar.classList.add('scrolled');
-        } else {
-            navbar.classList.remove('scrolled');
-        }
-    });
+
 
     // Parallax Effect on Hero Image
     window.addEventListener('scroll', () => {
