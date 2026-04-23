@@ -320,17 +320,25 @@
             submitBtn.style.opacity = '0.7';
 
             const formData = new FormData(contactForm);
+            const object = {};
+            formData.forEach((value, key) => object[key] = value);
+            const json = JSON.stringify(object);
 
             fetch(`https://formsubmit.co/ajax/${currentFormEmail}`, {
                 method: "POST",
-                body: formData
+                headers: {
+                    "Content-Type": "application/json",
+                    "Accept": "application/json"
+                },
+                body: json
             })
             .then(response => response.json())
             .then(data => {
-                if(data.success) {
+                if(data.success === "true" || data.success === true) {
                     contactForm.style.display = 'none';
                     successMsg.style.display = 'block';
                     branchDetails.style.marginTop = '2rem';
+                    window.scrollTo({ top: formContainer.offsetTop - 150, behavior: 'smooth' });
                 } else {
                     alert('There was an error sending your enquiry. Please try again.');
                     submitBtn.textContent = 'Send Enquiry';
