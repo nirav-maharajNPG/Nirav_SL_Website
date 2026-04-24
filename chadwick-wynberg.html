@@ -242,7 +242,8 @@
         <script>
         (function() {
             var SF_DATA = [
-                { id: "3-7", group: "small", range: "3 – 7 m²", image: 'assets/size-finder/sf_3_7.png', sizes: [
+                { id: "3-7", group: "small", range: "2 – 7 m²", image: 'assets/size-finder/sf_3_7.png', sizes: [
+                    { m: 2,  w: 1,   l: 2,   icon: '📦', title: 'Mini Locker', desc: 'Ideal for luggage, a few boxes, or seasonal sports gear. Perfect for compact storage.', tags: ['Luggage', 'Boxed items'] },
                     { m: 3,  w: 1.5, l: 2,   icon: '📦', title: 'Essentials Box', desc: 'Perfect for a few boxes of documents, small seasonal items, or a compact personal collection.', tags: ['Documents', 'Small boxes'] },
                     { m: 5,  w: 2,   l: 2.5, icon: '📦', title: 'Small Cupboard', desc: 'Fits the contents of a small wardrobe or a couple of filing cabinets with boxed items.', tags: ['Wardrobe', 'Small appliances'] },
                     { m: 6,  w: 2,   l: 3,   icon: '🛋️', title: 'Studio Extras', desc: 'Holds a small sofa, boxes, and a few personal items. Ideal for studio apartment overflow.', tags: ['Sofa', 'Studio items'] },
@@ -272,7 +273,7 @@
                 var catHtml = `
                     <button id="cat-small" class="sf-cat-btn" onclick="sfJumpToCat('small')">
                         <i class="fas fa-box"></i><span>Small</span>
-                        <span class="sf-cat-sub">3 – 18 m²</span>
+                        <span class="sf-cat-sub">2 – 18 m²</span>
                     </button>
                 `;
 
