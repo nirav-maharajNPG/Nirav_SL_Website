@@ -242,20 +242,20 @@
         <script>
         (function() {
             var SF_DATA = [
-                { id: "3-7", range: "3 – 7 m²", image: 'assets/size-finder/sf_3_7.png', sizes: [
+                { id: "3-7", group: "small", range: "3 – 7 m²", image: 'assets/size-finder/sf_3_7.png', sizes: [
                     { m: 3,  w: 1.5, l: 2,   icon: '📦', title: 'Essentials Box', desc: 'Perfect for a few boxes of documents, small seasonal items, or a compact personal collection.', tags: ['Documents', 'Small boxes'] },
                     { m: 5,  w: 2,   l: 2.5, icon: '📦', title: 'Small Cupboard', desc: 'Fits the contents of a small wardrobe or a couple of filing cabinets with boxed items.', tags: ['Wardrobe', 'Small appliances'] },
                     { m: 6,  w: 2,   l: 3,   icon: '🛋️', title: 'Studio Extras', desc: 'Holds a small sofa, boxes, and a few personal items. Ideal for studio apartment overflow.', tags: ['Sofa', 'Studio items'] },
                     { m: 7,  w: 2,   l: 3.5, icon: '🛋️', title: 'Lounge Corner', desc: 'Comfortably stores a couch, coffee table, and several boxes of household goods.', tags: ['Couch', 'House items'] }
                 ]},
-                { id: "8-12", range: "8 – 12 m²", image: 'assets/size-finder/sf_8_12.png', sizes: [
+                { id: "8-12", group: "small", range: "8 – 12 m²", image: 'assets/size-finder/sf_8_12.png', sizes: [
                     { m: 8,  w: 2,   l: 4,   icon: '🛏️', title: 'Bedroom Unit', desc: 'Fits a single bed, dresser, and numerous boxes. Suitable for a single room move.', tags: ['Single bed', 'Dresser'] },
                     { m: 9,  w: 3,   l: 3,   icon: '🛏️', title: 'Compact Home', desc: 'Space for a single bed, small couch, boxes, and small appliances.', tags: ['Bed', 'Small couch'] },
                     { m: 10, w: 2,   l: 5,   icon: '🏠', title: 'One-Room Move', desc: 'Ideal for the full contents of one furnished room, including a double bed, wardrobe, and boxes.', tags: ['Double bed', 'Wardrobe'] },
                     { m: 11, w: 2.2, l: 5,   icon: '🏠', title: 'Room and a Half', desc: 'Handles a fully furnished room plus extra items like a bicycle, sporting equipment, or stock.', tags: ['Furnished room', 'Bike'] },
                     { m: 12, w: 3,   l: 4,   icon: '🏠', title: 'Family Room', desc: 'Fits a bedroom suite (queen bed, wardrobe, side tables) plus boxes and additional items.', tags: ['Queen bed', 'Wardrobe'] }
                 ]},
-                { id: "13-18", range: "13 – 18 m²", image: 'assets/size-finder/sf_13_18.png', sizes: [
+                { id: "13-18", group: "small", range: "13 – 18 m²", image: 'assets/size-finder/sf_13_18.png', sizes: [
                     { m: 13, w: 2.6, l: 5,   icon: '🚗', title: 'Business Stock', desc: 'Great for small business inventory, retail stock, or a collection of workshop tools.', tags: ['Stock', 'Tools'] },
                     { m: 14, w: 2.8, l: 5,   icon: '🚗', title: 'Starter Business', desc: 'Holds a moderate amount of business stock, office furniture, or medium workshop equipment.', tags: ['Furniture', 'Stock'] },
                     { m: 15, w: 3,   l: 5,   icon: '🛋️', title: 'Lounge Suite', desc: 'Accommodates a full lounge suite, dining set, and a generous number of boxes.', tags: ['Lounge suite', 'Dining set'] },
@@ -269,20 +269,25 @@
                 var chipContainer = document.getElementById('sf-chips-container');
                 if (!catContainer || !chipContainer) return;
 
-                var catHtml = '';
+                var catHtml = `
+                    <button id="cat-small" class="sf-cat-btn" onclick="sfJumpToCat('small')">
+                        <i class="fas fa-box"></i><span>Small</span>
+                        <span class="sf-cat-sub">3 – 18 m²</span>
+                    </button>
+                    <button id="cat-medium" class="sf-cat-btn" style="opacity: 0.4; cursor: not-allowed;" onclick="return false;">
+                        <i class="fas fa-boxes"></i><span>Medium</span>
+                        <span class="sf-cat-sub">Unavailable</span>
+                    </button>
+                    <button id="cat-large" class="sf-cat-btn" style="opacity: 0.4; cursor: not-allowed;" onclick="return false;">
+                        <i class="fas fa-warehouse"></i><span>Large</span>
+                        <span class="sf-cat-sub">Unavailable</span>
+                    </button>
+                `;
+
                 var chipHtml = '';
-
                 SF_DATA.forEach(function(cat) {
-                    var icon = 'fa-box';
-                    if (parseInt(cat.id) > 15) icon = 'fa-boxes';
-                    
-                    catHtml += '<button id="cat-' + cat.id + '" class="sf-cat-btn" onclick="sfJumpToCat(\'' + cat.id + '\')">' +
-                               '<i class="fas ' + icon + '"></i>' +
-                               '<span>' + cat.id + ' m²</span>' +
-                               '<span class="sf-cat-sub">' + cat.range + '</span></button>';
-
                     cat.sizes.forEach(function(s) {
-                        chipHtml += '<button class="sf-chip" data-cat="' + cat.id + '" id="chip-' + s.m + '" onclick="sfSelectSize(' + s.m + ', \'' + cat.id + '\', true)">' + s.m + ' m\u00b2</button>';
+                        chipHtml += '<button class="sf-chip" data-cat="' + cat.group + '" id="chip-' + s.m + '" onclick="sfSelectSize(' + s.m + ', \'' + cat.id + '\', true)">' + s.m + ' m\u00b2</button>';
                     });
                 });
 
@@ -317,15 +322,11 @@
                 document.getElementById('sf-chips-container').scrollBy({ left: offset, behavior: 'smooth' });
             };
 
-            window.sfJumpToCat = function(catId) {
-                var firstChip = document.querySelector('.sf-chip[data-cat="' + catId + '"]');
+            window.sfJumpToCat = function(groupId) {
+                var firstChip = document.querySelector('.sf-chip[data-cat="' + groupId + '"]');
                 if (firstChip) {
                     firstChip.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
                     firstChip.click();
-                }
-                var catBtn = document.getElementById('cat-' + catId);
-                if (catBtn) {
-                    catBtn.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
                 }
             };
 
@@ -340,9 +341,9 @@
                     if (diff < minDiff) { minDiff = diff; closestChip = chip; }
                 });
                 if (closestChip) {
-                    var catId = closestChip.getAttribute('data-cat');
+                    var groupId = closestChip.getAttribute('data-cat');
                     document.querySelectorAll('.sf-cat-btn').forEach(function(b) { 
-                        b.classList.toggle('sf-cat-active', b.id === 'cat-' + catId); 
+                        b.classList.toggle('sf-cat-active', b.id === 'cat-' + groupId); 
                     });
                 }
             }
@@ -356,10 +357,12 @@
                 }
                 
                 document.querySelectorAll('.sf-cat-btn').forEach(function(b) { b.classList.remove('sf-cat-active'); });
-                var catBtn = document.getElementById('cat-' + catId);
+                var catData = SF_DATA.find(function(c) { return c.id === catId; });
+                if (!catData) return;
+
+                var catBtn = document.getElementById('cat-' + catData.group);
                 if (catBtn) {
                     catBtn.classList.add('sf-cat-active');
-                    if (scrollIntoView) catBtn.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
                 }
 
                 var catData = SF_DATA.find(function(c) { return c.id === catId; });

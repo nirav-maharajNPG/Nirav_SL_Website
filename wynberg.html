@@ -201,60 +201,60 @@
         <script>
         (function() {
             var SF_DATA = [
-                { id: "3-7", range: "3 – 7 m²", image: 'assets/size-finder/sf_3_7.png', sizes: [
+                { id: "3-7", group: "small", range: "3 – 7 m²", image: 'assets/size-finder/sf_3_7.png', sizes: [
                     { m: 3,  w: 1.5, l: 2,   icon: '📦', title: 'Essentials Box', desc: 'Perfect for a few boxes of documents, small seasonal items, or a compact personal collection.', tags: ['Documents', 'Small boxes'] },
                     { m: 5,  w: 2,   l: 2.5, icon: '📦', title: 'Small Cupboard', desc: 'Fits the contents of a small wardrobe or a couple of filing cabinets with boxed items.', tags: ['Wardrobe', 'Small appliances'] },
                     { m: 6,  w: 2,   l: 3,   icon: '🛋️', title: 'Studio Extras', desc: 'Holds a small sofa, boxes, and a few personal items. Ideal for studio apartment overflow.', tags: ['Sofa', 'Studio items'] },
                     { m: 7,  w: 2,   l: 3.5, icon: '🛋️', title: 'Lounge Corner', desc: 'Comfortably stores a couch, coffee table, and several boxes of household goods.', tags: ['Couch', 'House items'] }
                 ]},
-                { id: "8-12", range: "8 – 12 m²", image: 'assets/size-finder/sf_8_12.png', sizes: [
+                { id: "8-12", group: "small", range: "8 – 12 m²", image: 'assets/size-finder/sf_8_12.png', sizes: [
                     { m: 8,  w: 2,   l: 4,   icon: '🛏️', title: 'Bedroom Unit', desc: 'Fits a single bed, dresser, and numerous boxes. Suitable for a single room move.', tags: ['Single bed', 'Dresser'] },
                     { m: 9,  w: 3,   l: 3,   icon: '🛏️', title: 'Compact Home', desc: 'Space for a single bed, small couch, boxes, and small appliances.', tags: ['Bed', 'Small couch'] },
                     { m: 10, w: 2,   l: 5,   icon: '🏠', title: 'One-Room Move', desc: 'Ideal for the full contents of one furnished room, including a double bed, wardrobe, and boxes.', tags: ['Double bed', 'Wardrobe'] },
                     { m: 11, w: 2.2, l: 5,   icon: '🏠', title: 'Room and a Half', desc: 'Handles a fully furnished room plus extra items like a bicycle, sporting equipment, or stock.', tags: ['Furnished room', 'Bike'] },
                     { m: 12, w: 3,   l: 4,   icon: '🏠', title: 'Family Room', desc: 'Fits a bedroom suite (queen bed, wardrobe, side tables) plus boxes and additional items.', tags: ['Queen bed', 'Wardrobe'] }
                 ]},
-                { id: "13-18", range: "13 – 18 m²", image: 'assets/size-finder/sf_13_18.png', sizes: [
+                { id: "13-18", group: "small", range: "13 – 18 m²", image: 'assets/size-finder/sf_13_18.png', sizes: [
                     { m: 13, w: 2.6, l: 5,   icon: '🚗', title: 'Business Stock', desc: 'Great for small business inventory, retail stock, or a collection of workshop tools.', tags: ['Stock', 'Tools'] },
                     { m: 14, w: 2.8, l: 5,   icon: '🚗', title: 'Starter Business', desc: 'Holds a moderate amount of business stock, office furniture, or medium workshop equipment.', tags: ['Furniture', 'Stock'] },
                     { m: 15, w: 3,   l: 5,   icon: '🛋️', title: 'Lounge Suite', desc: 'Accommodates a full lounge suite, dining set, and a generous number of boxes.', tags: ['Lounge suite', 'Dining set'] },
                     { m: 16, w: 4,   l: 4,   icon: '🏡', title: 'Two-Room Apartment', desc: 'Stores the full contents of a two-room apartment including bedroom and lounge furniture.', tags: ['2-room apt', 'Bedroom suite'] },
                     { m: 18, w: 3,   l: 6,   icon: '🏡', title: 'Small Flat', desc: 'Handles a small flat worth of furniture, appliances, and boxes comfortably.', tags: ['Flat contents', 'Appliances'] }
                 ]},
-                { id: "20-27", range: "20 – 27 m²", image: 'assets/size-finder/sf_20_27.png', sizes: [
+                { id: "20-27", group: "medium", range: "20 – 27 m²", image: 'assets/size-finder/sf_20_27.png', sizes: [
                     { m: 20, w: 4,   l: 5,   icon: '🏠', title: 'Two-Bedroom Home', desc: 'Great for a two-bedroom home contents, beds, lounge suite, kitchen items, and boxes.', tags: ['2-bedroom', 'Kitchen'] },
                     { m: 22, w: 4,   l: 5.5, icon: '🏠', title: 'Full Home Starter', desc: 'Fits all contents of a typical 2-bedroom home with space for appliances and extra items.', tags: ['Full 2-bed', 'Appliances'] },
                     { m: 24, w: 4,   l: 6,   icon: '🏠', title: 'Home and Extras', desc: 'Comfortable storage for a full 2-bedroom home plus garden furniture or bulky equipment.', tags: ['2-bed home', 'Garden gear'] },
                     { m: 25, w: 5,   l: 5,   icon: '🏘️', title: 'Three-Bedroom Home', desc: 'Accommodates the contents of a standard 3-bedroom home with room to spare.', tags: ['3-bedroom', 'Furniture'] },
                     { m: 27, w: 4.5, l: 6,   icon: '🏘️', title: 'Family Home', desc: 'Perfect for a full family home move including dining room, lounge, and multiple bedrooms.', tags: ['Family home', 'Dining'] }
                 ]},
-                { id: "30-36", range: "30 – 36 m²", image: 'assets/size-finder/sf_30_36.png', sizes: [
+                { id: "30-36", group: "medium", range: "30 – 36 m²", image: 'assets/size-finder/sf_30_36.png', sizes: [
                     { m: 30, w: 5,   l: 6,   icon: '🏭', title: 'Business Storage', desc: 'Excellent for SME inventory, bulk retail stock, office furniture, or construction equipment.', tags: ['SME Stock', 'Retail'] },
                     { m: 32, w: 4,   l: 8,   icon: '🏭', title: 'Workshop Storage', desc: 'A full workshop or trade vehicle inventory, tools, pallets, machinery, and supplies.', tags: ['Workshop', 'Pallets'] },
                     { m: 35, w: 5,   l: 7,   icon: '🏡', title: 'Large Family Home', desc: 'For larger 3 to 4 bedroom homes with full furniture, appliances, and everything in between.', tags: ['3-4 bedroom', 'Full house'] },
                     { m: 36, w: 6,   l: 6,   icon: '🏪', title: 'Retail Overflow', desc: 'Ideal for a retail business overflow, seasonal stock rotation, or large-scale home contents.', tags: ['Retail', 'Seasonal'] }
                 ]},
-                { id: "40-50", range: "40 – 50 m²", image: 'assets/size-finder/sf_40_50.png', sizes: [
+                { id: "40-50", group: "medium", range: "40 – 50 m²", image: 'assets/size-finder/sf_40_50.png', sizes: [
                     { m: 40, w: 5,   l: 8,   icon: '🏪', title: 'Full Business Unit', desc: 'Stores a full office or retail setup, desks, shelving, stock, and equipment with ease.', tags: ['Full office', 'Stock'] },
                     { m: 42, w: 6,   l: 7,    icon: '🏭', title: 'Commercial Unit', desc: 'Handles a full commercial relocation including heavy machinery, office suites, and bulk stock.', tags: ['Commercial', 'Machinery'] },
                     { m: 44, w: 4,   l: 11,   icon: '🏭', title: 'Industrial Starter', desc: 'Long format unit ideal for pipes, beams, long machinery, or industrial equipment storage.', tags: ['Long items', 'Industrial'] },
                     { m: 50, w: 5,   l: 10,   icon: '🏬', title: 'Large Business', desc: 'Perfect for medium-sized business inventory, a full office fit-out, or manufacturing stock.', tags: ['Business', 'Fit-out'] }
                 ]},
-                { id: "51-61", range: "51 – 61 m²", image: 'assets/size-finder/sf_51_61.png', sizes: [
+                { id: "51-61", group: "large", range: "51 – 61 m²", image: 'assets/size-finder/sf_51_61.png', sizes: [
                     { m: 51, w: 6,   l: 8.5,  icon: '🏬', title: 'Office Relocation', desc: 'Stores a full mid-size office during relocation, desks, server racks, cabinets, and stock.', tags: ['Relocation', 'Server racks'] },
                     { m: 60, w: 6,   l: 10,   icon: '🏢', title: 'Corporate Storage', desc: 'Ideal for corporate archiving, large-scale product inventory, or multi-department equipment.', tags: ['Corporate', 'Archive'] },
                     { m: 61, w: 6.1, l: 10,   icon: '🏢', title: 'Large Corporate', desc: 'A full corporate unit for major office moves, document archiving, and heavy equipment.', tags: ['Corporate move', 'Heavy gear'] }
                 ]},
-                { id: "64-81", range: "64 – 81 m²", image: 'assets/size-finder/sf_64_81.png', sizes: [
+                { id: "64-81", group: "large", range: "64 – 81 m²", image: 'assets/size-finder/sf_64_81.png', sizes: [
                     { m: 64, w: 8,   l: 8,    icon: '🏗️', title: 'Construction Hub', desc: 'Spacious square unit for construction material storage, equipment laydown, and site supplies.', tags: ['Construction', 'Equipment'] },
                     { m: 81, w: 9,   l: 9,    icon: '🏗️', title: 'Large Industrial', desc: 'For heavy plant, vehicles, large machinery, or a warehouse worth of palletised goods.', tags: ['Heavy plant', 'Vehicles'] }
                 ]},
-                { id: "97-119", range: "97 – 119 m²", image: 'assets/size-finder/sf_97_119.png', sizes: [
+                { id: "97-119", group: "large", range: "97 – 119 m²", image: 'assets/size-finder/sf_97_119.png', sizes: [
                     { m: 97,  w: 7,   l: 13.9, icon: '🚛', title: 'Fleet Storage', desc: 'Accommodates multiple vehicles, large fleet equipment, or oversized industrial shipments.', tags: ['Fleet', 'Industrial'] },
                     { m: 100, w: 10,  l: 10,   icon: '🚛', title: 'Full Warehouse Bay', desc: 'A full warehouse bay, ideal for wholesale inventory, full container offloading, or major relocations.', tags: ['Warehouse', 'Wholesale'] },
                     { m: 119, w: 7,   l: 17,   icon: '🏭', title: 'Industrial Warehouse', desc: 'Large-scale industrial storage for manufacturing inventory, equipment parks, or bulk distribution.', tags: ['Manufacturing', 'Bulk stock'] }
                 ]},
-                { id: "141-142", range: "141 – 142 m²", image: 'assets/size-finder/sf_141_142.png', sizes: [
+                { id: "141-142", group: "large", range: "141 – 142 m²", image: 'assets/size-finder/sf_141_142.png', sizes: [
                     { m: 141, w: 9,   l: 15.7, icon: '🏭', title: 'Enterprise Unit', desc: 'Enterprise-level storage for full corporate relocations, large equipment fleets, or industrial operations.', tags: ['Enterprise', 'Relocation'] },
                     { m: 142, w: 10,  l: 14.2, icon: '🏭', title: 'Maximum Capacity', desc: 'Our largest unit, suited for major industrial operations, full warehouse contents, or multi-business storage.', tags: ['Industrial', 'Warehouse'] }
                 ]}
@@ -265,23 +265,26 @@
                 var chipContainer = document.getElementById('sf-chips-container');
                 if (!catContainer || !chipContainer) return;
 
-                var catHtml = '';
+                // Only 3 Category Buttons
+                var catHtml = `
+                    <button id="cat-small" class="sf-cat-btn" onclick="sfJumpToCat('small')">
+                        <i class="fas fa-box"></i><span>Small</span>
+                        <span class="sf-cat-sub">3 – 18 m²</span>
+                    </button>
+                    <button id="cat-medium" class="sf-cat-btn" onclick="sfJumpToCat('medium')">
+                        <i class="fas fa-boxes"></i><span>Medium</span>
+                        <span class="sf-cat-sub">20 – 50 m²</span>
+                    </button>
+                    <button id="cat-large" class="sf-cat-btn" onclick="sfJumpToCat('large')">
+                        <i class="fas fa-warehouse"></i><span>Large</span>
+                        <span class="sf-cat-sub">51 – 142 m²</span>
+                    </button>
+                `;
+
                 var chipHtml = '';
-
                 SF_DATA.forEach(function(cat) {
-                    // Category Buttons
-                    var icon = 'fa-box';
-                    if (parseInt(cat.id) > 15) icon = 'fa-boxes';
-                    if (parseInt(cat.id) > 40) icon = 'fa-warehouse';
-                    
-                    catHtml += '<button id="cat-' + cat.id + '" class="sf-cat-btn" onclick="sfJumpToCat(\'' + cat.id + '\')">' +
-                               '<i class="fas ' + icon + '"></i>' +
-                               '<span>' + cat.id + ' m²</span>' +
-                               '<span class="sf-cat-sub">' + cat.range + '</span></button>';
-
-                    // Size Chips
                     cat.sizes.forEach(function(s) {
-                        chipHtml += '<button class="sf-chip" data-cat="' + cat.id + '" id="chip-' + s.m + '" onclick="sfSelectSize(' + s.m + ', \'' + cat.id + '\', true)">' + s.m + ' m\u00b2</button>';
+                        chipHtml += '<button class="sf-chip" data-cat="' + cat.group + '" id="chip-' + s.m + '" onclick="sfSelectSize(' + s.m + ', \'' + cat.id + '\', true)">' + s.m + ' m\u00b2</button>';
                     });
                 });
 
@@ -316,15 +319,11 @@
                 document.getElementById('sf-chips-container').scrollBy({ left: offset, behavior: 'smooth' });
             };
 
-            window.sfJumpToCat = function(catId) {
-                var firstChip = document.querySelector('.sf-chip[data-cat="' + catId + '"]');
+            window.sfJumpToCat = function(groupId) {
+                var firstChip = document.querySelector('.sf-chip[data-cat="' + groupId + '"]');
                 if (firstChip) {
                     firstChip.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
                     firstChip.click();
-                }
-                var catBtn = document.getElementById('cat-' + catId);
-                if (catBtn) {
-                    catBtn.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
                 }
             };
 
@@ -339,9 +338,9 @@
                     if (diff < minDiff) { minDiff = diff; closestChip = chip; }
                 });
                 if (closestChip) {
-                    var catId = closestChip.getAttribute('data-cat');
+                    var groupId = closestChip.getAttribute('data-cat');
                     document.querySelectorAll('.sf-cat-btn').forEach(function(b) { 
-                        b.classList.toggle('sf-cat-active', b.id === 'cat-' + catId); 
+                        b.classList.toggle('sf-cat-active', b.id === 'cat-' + groupId); 
                     });
                 }
             }
@@ -355,10 +354,12 @@
                 }
                 
                 document.querySelectorAll('.sf-cat-btn').forEach(function(b) { b.classList.remove('sf-cat-active'); });
-                var catBtn = document.getElementById('cat-' + catId);
+                var catData = SF_DATA.find(function(c) { return c.id === catId; });
+                if (!catData) return;
+
+                var catBtn = document.getElementById('cat-' + catData.group);
                 if (catBtn) {
                     catBtn.classList.add('sf-cat-active');
-                    if (scrollIntoView) catBtn.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
                 }
 
                 var catData = SF_DATA.find(function(c) { return c.id === catId; });
