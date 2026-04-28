@@ -2423,8 +2423,8 @@ button, input, select, textarea {
     flex: 0 0 auto;
     background: white;
     border: 1px solid #e5e7eb;
-    padding: 1.2rem 2rem;
-    border-radius: 16px;
+    padding: 0.8rem 1.5rem;
+    border-radius: 12px;
     cursor: pointer;
     transition: all 0.3s ease;
     display: flex;
@@ -2475,7 +2475,7 @@ button, input, select, textarea {
     overflow: hidden;
     padding: 2rem;
     border-right: 1px solid #f0f0f0;
-    min-height: 380px;
+    min-height: 320px;
 }
 
 #sf-3d-image {
@@ -2649,31 +2649,32 @@ button, input, select, textarea {
 .sf-scroll-btn:hover { background: var(--primary-blue); color: white; border-color: var(--primary-blue); }
 
 @media (max-width: 768px) {
-    #size-finder .section-header { margin-bottom: 1.5rem !important; }
-    #size-finder .section-title { font-size: 1.8rem !important; }
-    #size-finder .section-header p { font-size: 0.95rem !important; margin-top: 0.5rem !important; }
+    #size-finder { padding: 2rem 0 !important; }
+    #size-finder .section-header { margin-bottom: 1rem !important; }
+    #size-finder .section-title { font-size: 1.5rem !important; }
+    #size-finder .section-header p { display: none; } /* Hide description on mobile to save space */
     
-    .sf-cat-wrapper { margin-bottom: 1rem !important; }
-    .sf-cat-btn { padding: 0.8rem 1rem !important; min-width: 110px !important; }
-    .sf-cat-btn i { font-size: 1rem !important; }
-    .sf-cat-sub { font-size: 0.7rem !important; }
+    .sf-cat-wrapper { margin-bottom: 0.5rem !important; gap: 0.5rem !important; }
+    .sf-cat-btn { padding: 0.5rem 0.8rem !important; min-width: 90px !important; border-radius: 10px !important; }
+    .sf-cat-btn i { font-size: 0.9rem !important; margin-bottom: 0 !important; }
+    .sf-cat-sub { display: none; } /* Hide sub-range on mobile */
     
-    .sf-carousel-wrapper { margin-bottom: 1.5rem !important; }
-    .sf-chip { padding: 0.6rem 1.2rem !important; font-size: 0.85rem !important; }
+    .sf-carousel-wrapper { margin-bottom: 1rem !important; }
+    .sf-chip { padding: 0.4rem 1rem !important; font-size: 0.8rem !important; }
     
     .sf-result-grid { grid-template-columns: 1fr !important; }
-    .sf-visualizer-box { border-right: none !important; border-bottom: 1px solid #f0f0f0; min-height: 280px !important; padding: 1rem !important; }
-    .sf-hud-badge { top: 1rem !important; left: 1rem !important; padding: 0.5rem 1rem !important; }
-    .sf-hud-badge #sf-hud-area { font-size: 1.2rem !important; }
-    .sf-hud-badge-tag { font-size: 0.65rem !important; }
-    .sf-hud-disclaimer { font-size: 0.65rem !important; bottom: 0.8rem !important; }
+    .sf-visualizer-box { border-right: none !important; border-bottom: 1px solid #f0f0f0; min-height: 220px !important; padding: 0.5rem !important; }
+    .sf-hud-badge { top: 0.5rem !important; left: 0.5rem !important; padding: 0.4rem 0.8rem !important; }
+    .sf-hud-badge #sf-hud-area { font-size: 1.1rem !important; }
+    .sf-hud-badge-tag { font-size: 0.6rem !important; }
+    .sf-hud-disclaimer { display: none; }
     
-    .sf-info-box { padding: 1.5rem !important; }
-    #sf-fits-icon { font-size: 2.5rem !important; margin-bottom: 0.5rem !important; }
-    #sf-fits-title { font-size: 1.4rem !important; margin-bottom: 0.5rem !important; }
-    #sf-fits-desc { font-size: 0.9rem !important; margin-bottom: 1.2rem !important; }
-    .sf-tag { font-size: 0.75rem !important; padding: 0.3rem 0.7rem !important; }
+    .sf-info-box { padding: 1.2rem !important; }
+    #sf-fits-icon { font-size: 2rem !important; margin-bottom: 0.3rem !important; }
+    #sf-fits-title { font-size: 1.2rem !important; margin-bottom: 0.3rem !important; }
+    #sf-fits-desc { font-size: 0.85rem !important; margin-bottom: 1rem !important; line-height: 1.4 !important; }
+    .sf-tag { font-size: 0.7rem !important; padding: 0.2rem 0.5rem !important; }
     
-    .sf-hud-left { bottom: 15% !important; left: 5% !important; width: 50% !important; }
-    .sf-hud-right { bottom: 25% !important; right: 3% !important; width: 45% !important; }
+    .sf-hud-left { bottom: 10% !important; left: 5% !important; width: 55% !important; }
+    .sf-hud-right { bottom: 20% !important; right: 3% !important; width: 50% !important; }
 }
