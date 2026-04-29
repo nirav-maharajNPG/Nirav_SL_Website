@@ -1117,6 +1117,10 @@ button, input, select, textarea {
     margin: 0;
 }
 
+.view-all-item {
+    display: none;
+}
+
 .dropdown-links {
     list-style: none;
     padding: 0;
@@ -1945,9 +1949,9 @@ button, input, select, textarea {
 
     .nav-links .nav-link {
         font-size: 1.15rem;
-        font-weight: 500;
+        font-weight: 700; /* Bolder as per request */
         color: var(--black) !important;
-        padding: 15px 20px; /* Reduced from 20px to tighten layout */
+        padding: 15px 20px;
         display: flex;
         justify-content: space-between;
         align-items: center;
@@ -1956,6 +1960,12 @@ button, input, select, textarea {
         cursor: pointer;
         text-transform: uppercase;
         box-sizing: border-box;
+        transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    .nav-item.panel-active > .nav-link {
+        background-color: var(--primary-blue) !important;
+        color: var(--white) !important;
     }
 
     .nav-links .nav-link::after {
@@ -1966,14 +1976,15 @@ button, input, select, textarea {
         content: '\f078'; /* fa-chevron-down */
         font-family: 'Font Awesome 6 Free';
         font-weight: 900;
-        font-size: 1rem;
-        opacity: 0.5;
-        transition: transform 0.3s ease;
-        display: block; /* re-add for dropdowns */
+        font-size: 0.85rem;
+        opacity: 0.6;
+        transition: transform 0.3s ease, color 0.3s ease;
     }
 
     .nav-item.panel-active > .nav-link::after {
         transform: rotate(-180deg);
+        color: var(--white) !important;
+        opacity: 1 !important;
     }
 
     /* True Accordion logic */
@@ -2028,19 +2039,33 @@ button, input, select, textarea {
     }
 
     .dropdown-links a {
-        padding: 12px 20px 12px 40px !important; /* Reduced from 20px to tighten layout */
-        font-size: 1.05rem;
+        padding: 15px 20px 15px 50px !important; /* Increased indentation */
+        font-size: 0.95rem;
         color: var(--dark-grey) !important;
         display: block;
         opacity: 1 !important;
         text-decoration: none;
         box-sizing: border-box;
         width: 100%;
-        background-color: transparent !important;
-        font-weight: 500 !important;
-        text-transform: capitalize !important;
+        background-color: var(--white) !important; /* Enforce white background */
+        font-weight: 700 !important;
+        text-transform: uppercase !important;
         text-align: left !important;
         white-space: nowrap;
+        border-bottom: 1px solid #f0f0f0; /* Subtle dividers */
+    }
+
+    .view-all-item {
+        display: block !important;
+    }
+
+    .view-all-link {
+        color: var(--primary-blue) !important;
+        font-weight: 800 !important;
+    }
+
+    .view-all-link i {
+        margin-left: 0.5rem;
     }
 
     .dropdown-column h4,
