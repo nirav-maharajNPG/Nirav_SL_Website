@@ -2050,10 +2050,15 @@ button, input, select, textarea {
         margin: 0;
     }
 
+    .dropdown-column {
+        text-align: left !important; /* Override inline center alignment */
+    }
+
     .dropdown-links {
+        display: block !important; /* Override inline-block centering */
         list-style: none;
-        padding: 0;
-        margin: 0;
+        padding: 0 !important;
+        margin: 0 !important;
     }
 
     .dropdown-links li {
