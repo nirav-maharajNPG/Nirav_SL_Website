@@ -729,14 +729,10 @@ button, input, select, textarea {
     font-size: 1.8rem; /* Slightly smaller to fit longer names */
     margin-bottom: 1rem;
     line-height: 1.2;
-    min-height: 4.5rem; /* Ensure space for 2 lines if needed, but centering them */
-    display: flex;
-    align-items: center;
-    justify-content: center;
 }
 
 .location-name.long-name {
-    font-size: 1.15rem; /* Reduced from 1.35rem to force single line on desktop 4-col layout */
+    font-size: 1.35rem; /* Specifically for "Johannesburg CBD" to stay on one line or look straighten */
 }
 
 .location-link {
