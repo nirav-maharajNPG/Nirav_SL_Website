@@ -917,6 +917,23 @@ button, input, select, textarea {
     animation: fadeInUp 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
+/* Features Grid responsive */
+.features-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+}
+
+@media (max-width: 768px) {
+    .features-grid {
+        grid-template-columns: 1fr !important;
+        gap: 1rem !important;
+    }
+    .features-grid > div {
+        font-size: 1rem !important;
+    }
+}
+
 /* Footer White Redesign */
 .footer {
     background-color: #E8F4FF; /* Slightly darker than Alice Blue */
