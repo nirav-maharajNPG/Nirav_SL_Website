@@ -726,13 +726,14 @@ button, input, select, textarea {
 }
 
 .location-name {
-    font-size: 1.8rem; /* Slightly smaller to fit longer names */
+    font-size: 1.8rem;
     margin-bottom: 1rem;
     line-height: 1.2;
-    min-height: 4.5rem; /* Ensure space for 2 lines if needed, but centering them */
+    min-height: 4.5rem; /* Space for 2 lines */
     display: flex;
-    align-items: center;
+    align-items: flex-end; /* Align to baseline */
     justify-content: center;
+    padding-bottom: 0.5rem;
 }
 
 .location-name.long-name {
