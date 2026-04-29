@@ -754,6 +754,33 @@ button, input, select, textarea {
     transform: translateY(0);
 }
 
+@media (max-width: 768px) {
+    .location-card {
+        height: 380px !important; /* Slightly shorter for better mobile stacking */
+    }
+    .location-content {
+        padding: 1.5rem !important;
+        height: auto !important; /* Allow height to adapt to content */
+        min-height: 160px;
+        background: linear-gradient(transparent, rgba(0,0,0,0.85) 40%, rgba(0,0,0,0.95) 100%);
+    }
+    .location-name {
+        font-size: 1.5rem !important;
+        margin-bottom: 0.5rem !important;
+    }
+    .location-name.long-name {
+        font-size: 1.2rem !important;
+    }
+    .location-link {
+        opacity: 1 !important; /* Always visible on mobile */
+        transform: translateY(0) !important;
+        margin-top: 0.5rem;
+    }
+    .location-content p {
+        display: none; /* Hide descriptions on small mobile to keep it clean */
+    }
+}
+
 /* Services Grid */
 .service-item {
     padding: 3.5rem;
