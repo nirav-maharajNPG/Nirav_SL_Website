@@ -2066,7 +2066,7 @@ button, input, select, textarea {
     }
 
     .dropdown-links a {
-        padding: 15px 20px 15px 25px !important; /* Reduced indentation from 50px */
+        padding: 15px 20px !important; /* Removed extra indentation to align with main header */
         font-size: 0.95rem;
         color: var(--dark-grey) !important;
         display: block;
