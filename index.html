@@ -25,61 +25,6 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        /* Video Modal */
-        #video-modal {
-            display: none;
-            position: fixed;
-            inset: 0;
-            background: rgba(0, 0, 0, 0.88);
-            z-index: 9999;
-            align-items: center;
-            justify-content: center;
-            padding: 1rem;
-        }
-        #video-modal.active {
-            display: flex;
-        }
-        .modal-inner {
-            position: relative;
-            width: 100%;
-            max-width: 960px;
-            background: #000;
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 30px 80px rgba(0,0,0,0.6);
-        }
-        .modal-inner video {
-            width: 100%;
-            height: auto;
-            display: block;
-            max-height: 85vh;
-            object-fit: contain;
-        }
-        .modal-close {
-            position: absolute;
-            top: 12px;
-            right: 14px;
-            background: rgba(255,255,255,0.15);
-            border: none;
-            color: #fff;
-            font-size: 1.4rem;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: background 0.3s;
-            z-index: 10;
-        }
-        .modal-close:hover {
-            background: rgba(255,255,255,0.3);
-        }
-        @media (max-width: 480px) {
-            .modal-inner video { max-height: 60vh; }
-        }
     </style>
 </head>
 <body>
@@ -134,14 +79,7 @@
             </div>
             <div class="hero-right">
                 <div class="hero-carousel" id="heroCarousel">
-                    <div class="hero-slide active" style="background-image: url('assets/Storage Locker/Cover pics/wynbergcover1.png'); background-position: center top; background-size: cover;">
-                        <div class="play-overlay" onclick="openVideoModal()">
-                            <div class="play-btn-circle">
-                                <i class="fas fa-play"></i>
-                            </div>
-                            <div class="play-label">Watch Video Tour</div>
-                        </div>
-                    </div>
+                    <div class="hero-slide active" style="background-image: url('assets/Storage Locker/Cover pics/wynbergcover1.png'); background-position: center top; background-size: cover;"></div>
                     <div class="hero-slide" style="background-image: url('assets/chadwick-cover/Gemini_Generated_Image_jmmo96jmmo96jmmo.png')"></div>
                     <div class="hero-slide" style="background-image: url('assets/Storage Locker/Cover pics/johannesburg CBD.jpg'); background-position: center top;"></div>
                     <div class="hero-slide" style="background-image: url('assets/Storage Locker/Cover pics/Vereeniging1.jpg')"></div>
@@ -269,12 +207,6 @@
                     <div class="feature-track" id="featureTrack">
                         <div class="feature-slide" style="position: relative;">
                             <img src="assets/Storage Locker/Cover pics/wynbergcover1.png" alt="Wynberg Storage Locker" style="object-position: center top;" loading="lazy">
-                            <div class="play-overlay" onclick="openVideoModal()">
-                                <div class="play-btn-circle">
-                                    <i class="fas fa-play"></i>
-                                </div>
-                                <div class="play-label">Watch Video Tour</div>
-                            </div>
                         </div>
                         <div class="feature-slide"><img src="assets/chadwick-cover/Gemini_Generated_Image_jmmo96jmmo96jmmo.png" alt="Sandton Storage Locker" loading="lazy"></div>
                         <div class="feature-slide"><img src="assets/Storage Locker/Cover pics/johannesburg CBD.jpg" alt="Johannesburg CBD Storage" style="object-position: center top;" loading="lazy"></div>
@@ -359,52 +291,6 @@
     </footer>
 
     <script src="index.js"></script>
-
-    <!-- Video Modal -->
-    <div id="video-modal" role="dialog" aria-modal="true" aria-label="Virtual Tour Video">
-        <div class="modal-inner">
-            <button class="modal-close" onclick="closeVideoModal()" aria-label="Close video">
-                <i class="fas fa-times"></i>
-            </button>
-            <video id="tour-video" controls muted playsinline preload="auto">
-                <source src="assets/virtual-tour.mp4" type="video/mp4">
-                Your browser does not support the video tag.
-            </video>
-        </div>
-    </div>
-
-    <script>
-        const videoModal = document.getElementById('video-modal');
-        const tourVideo = document.getElementById('tour-video');
-
-        function openVideoModal() {
-            videoModal.classList.add('active');
-            document.body.style.overflow = 'hidden';
-            tourVideo.load();
-            var playPromise = tourVideo.play();
-            if (playPromise !== undefined) {
-                playPromise.catch(function(error) {
-                    console.log("Video play ignored: ", error);
-                });
-            }
-        }
-
-        function closeVideoModal() {
-            videoModal.classList.remove('active');
-            document.body.style.overflow = '';
-            tourVideo.pause();
-            tourVideo.currentTime = 0;
-        }
-
-        // Close when clicking the dark overlay background
-        videoModal.addEventListener('click', function(e) {
-            if (e.target === videoModal) closeVideoModal();
-        });
-
-        // Close with Escape key
-        document.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape') closeVideoModal();
-        });
 
         // Hero Carousel Logic
         let heroIndex = 0;
