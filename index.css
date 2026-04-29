@@ -1908,7 +1908,7 @@ button, input, select, textarea {
         flex-direction: column;
         align-items: stretch;
         justify-content: flex-start;
-        padding: 90px 0 30px; /* Reduced from 120px */
+        padding: 80px 0 20px; /* Reduced from 90px/30px to tighten layout */
         gap: 0;
         z-index: 1050;
         transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
@@ -1947,7 +1947,7 @@ button, input, select, textarea {
         font-size: 1.15rem;
         font-weight: 500;
         color: var(--black) !important;
-        padding: 20px 20px; /* Reduced from 30px */
+        padding: 15px 20px; /* Reduced from 20px to tighten layout */
         display: flex;
         justify-content: space-between;
         align-items: center;
@@ -2028,7 +2028,7 @@ button, input, select, textarea {
     }
 
     .dropdown-links a {
-        padding: 20px 20px 20px 40px !important; /* Indent submenus by extra 20px */
+        padding: 12px 20px 12px 40px !important; /* Reduced from 20px to tighten layout */
         font-size: 1.05rem;
         color: var(--dark-grey) !important;
         display: block;
@@ -2048,6 +2048,13 @@ button, input, select, textarea {
     .dropdown-links a::before,
     .dropdown-links a i {
         display: none !important;
+    }
+
+    .dropdown-logo-col {
+        border-left: none !important;
+        padding: 1.5rem 0 !important;
+        margin-top: 1rem !important;
+        border-top: 1px solid #eee;
     }
 
     .nav-links .btn-outline {
