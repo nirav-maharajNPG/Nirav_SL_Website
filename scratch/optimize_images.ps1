@@ -109,6 +109,8 @@ $replacements = @{
     "chadwick_01_hq.png" = "chadwick_01_hq.jpg"
     "Gemini_Generated_Image_m2g25fm2g25fm2g2 (1).png" = "Gemini_Generated_Image_m2g25fm2g25fm2g2 (1).jpg"
     "Gemini_Generated_Image_m2g25fm2g25fm2g2%20(1).png" = "Gemini_Generated_Image_m2g25fm2g25fm2g2%20(1).jpg"
+    'type="image/png" href="assets/Storage Locker/storagelockerlogo.png"' = 'type="image/jpeg" href="assets/Storage Locker/storagelockerlogo.jpg"'
+    "storagelockerlogo.png" = "storagelockerlogo.jpg"
 }
 
 foreach ($file in $htmlFiles) {
