@@ -98,6 +98,30 @@ Write-Host "=== UPDATING HTML REFERENCES ==="
 # Find all HTML files
 $htmlFiles = Get-ChildItem -Filter *.html
 
+$asyncStyleBlock = @"
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Inter:wght@300;400;500;600;700&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Inter:wght@300;400;500;600;700&display=swap" media="print" onload="this.media='all'">
+    <link rel="preload" as="style" href="index.css?v=24.0">
+    <link rel="stylesheet" href="index.css?v=24.0" media="print" onload="this.media='all'">
+    <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" media="print" onload="this.media='all'">
+    <noscript>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Inter:wght@300;400;500;600;700&display=swap">
+        <link rel="stylesheet" href="index.css?v=24.0">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    </noscript>
+"@
+
+$syncStyleBlock = @"
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Inter:wght@300;400;500;600;700&display=swap">
+    <link rel="stylesheet" href="index.css?v=24.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+"@
+
 $replacements = @{
     "Gemini_Generated_Image_jmmo96jmmo96jmmo.png" = "Gemini_Generated_Image_jmmo96jmmo96jmmo.jpg"
     "wynbergcover1.png" = "wynbergcover1.jpg"
@@ -120,22 +144,41 @@ $replacements = @{
     '<button class="gallery-btn next" id="nextBtn">' = '<button class="gallery-btn next" id="nextBtn" aria-label="Next image">'
     '<button class="gallery-btn prev" id="storagePrev" style="width: 50px; height: 50px; background: rgba(255,255,255,0.9); color: var(--black);">' = '<button class="gallery-btn prev" id="storagePrev" style="width: 50px; height: 50px; background: rgba(255,255,255,0.9); color: var(--black);" aria-label="Previous image">'
     '<button class="gallery-btn next" id="storageNext" style="width: 50px; height: 50px; background: rgba(255,255,255,0.9); color: var(--black);">' = '<button class="gallery-btn next" id="storageNext" style="width: 50px; height: 50px; background: rgba(255,255,255,0.9); color: var(--black);" aria-label="Next image">'
+    
+    # Navbar Logo Sizing
+    '<img src="assets/Storage Locker/storagelockerlogo.jpg" alt="Storage Locker Logo" fetchpriority="high">' = '<img src="assets/Storage Locker/storagelockerlogo.jpg" alt="Storage Locker Logo" fetchpriority="high" width="51" height="70">'
+    '<img src="assets/Storage Locker/storagelockerlogo.jpg" alt="Storage Locker Logo" fetchpriority="high" loading="lazy">' = '<img src="assets/Storage Locker/storagelockerlogo.jpg" alt="Storage Locker Logo" fetchpriority="high" loading="lazy" width="51" height="70">'
+    
+    # Dropdown Logo Sizing
+    '<img src="assets/Storage Locker/storagelockerlogo.jpg" alt="Storage Locker Logo">' = '<img src="assets/Storage Locker/storagelockerlogo.jpg" alt="Storage Locker Logo" width="150" height="205">'
+    '<img src="assets/Storage Locker/storagelockerlogo.jpg" alt="Storage Locker Logo" loading="lazy">' = '<img src="assets/Storage Locker/storagelockerlogo.jpg" alt="Storage Locker Logo" loading="lazy" width="150" height="205">'
+    
+    # Footer Logo Sizing
+    '<img src="assets/Storage Locker/storagelockerlogo.jpg" alt="Storage Locker Logo" style="filter: contrast(1.2) brightness(1.1); mix-blend-mode: multiply;" loading="lazy">' = '<img src="assets/Storage Locker/storagelockerlogo.jpg" alt="Storage Locker Logo" style="filter: contrast(1.2) brightness(1.1); mix-blend-mode: multiply;" loading="lazy" width="161" height="220">'
+    
+    # Style Block Replacement
+    $asyncStyleBlock = $syncStyleBlock
 }
 
 foreach ($file in $htmlFiles) {
     Write-Host "Updating HTML: $($file.Name)"
     $content = [System.IO.File]::ReadAllText($file.FullName, [System.Text.Encoding]::UTF8)
+    # Normalize file contents to LF to ensure line-ending agnostic matching
+    $content = $content -replace "\r\n", "`n"
     $modified = $false
     
     foreach ($key in $replacements.Keys) {
-        if ($content.Contains($key)) {
-            $content = $content.Replace($key, $replacements[$key])
+        $normKey = $key -replace "\r\n", "`n"
+        $normVal = $replacements[$key] -replace "\r\n", "`n"
+        if ($content.Contains($normKey)) {
+            $content = $content.Replace($normKey, $normVal)
             $modified = $true
-            Write-Host "  Replaced $key -> $($replacements[$key])"
+            Write-Host "  Replaced $normKey -> $normVal"
         }
     }
     
     if ($modified) {
+        # Keep LF line endings consistently for web files
         [System.IO.File]::WriteAllText($file.FullName, $content, [System.Text.Encoding]::UTF8)
         Write-Host "  Saved changes to $($file.Name)"
     }
