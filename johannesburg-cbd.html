@@ -444,8 +444,8 @@
                             <div class="gallery-slide"><img src="assets/CBDgallery/Keepers 3.jpg" alt="CBD Facility 5" loading="lazy"></div>
                             <div class="gallery-slide"><img src="assets/CBDgallery/Keepers 4.jpg" alt="CBD Facility 6" loading="lazy"></div>
                         </div>
-                        <button class="gallery-btn prev" id="prevBtn"><i class="fas fa-chevron-left"></i></button>
-                        <button class="gallery-btn next" id="nextBtn"><i class="fas fa-chevron-right"></i></button>
+                        <button class="gallery-btn prev" id="prevBtn" aria-label="Previous image"><i class="fas fa-chevron-left"></i></button>
+                        <button class="gallery-btn next" id="nextBtn" aria-label="Next image"><i class="fas fa-chevron-right"></i></button>
                         <div class="gallery-counter" id="galleryCounter">1 / 6</div>
                     </div>
                 </div>
@@ -534,7 +534,7 @@
         </div>
     </footer>
 
-    <script src="index.js"></script>
+    <script src="index.js" defer></script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const track = document.getElementById('galleryTrack');

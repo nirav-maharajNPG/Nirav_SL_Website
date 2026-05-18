@@ -310,8 +310,8 @@
                             <div class="gallery-slide"><img src="assets/morningside gallery/ec566e7b-8e2f-4cda-a719-628b5991c0cb_primary.jpg" alt="Morningside Office 16" loading="lazy" loading="lazy"></div>
                             <div class="gallery-slide"><img src="assets/morningside gallery/f3381987-050f-4959-8249-d1cf6ddd5979_primary.jpg" alt="Morningside Office 17" loading="lazy" loading="lazy"></div>
                         </div>
-                        <button class="gallery-btn prev" id="prevBtn"><i class="fas fa-chevron-left"></i></button>
-                        <button class="gallery-btn next" id="nextBtn"><i class="fas fa-chevron-right"></i></button>
+                        <button class="gallery-btn prev" id="prevBtn" aria-label="Previous image"><i class="fas fa-chevron-left"></i></button>
+                        <button class="gallery-btn next" id="nextBtn" aria-label="Next image"><i class="fas fa-chevron-right"></i></button>
                         <div class="gallery-counter" id="galleryCounter">1 / 17</div>
                     </div>
                 </div>
@@ -438,7 +438,7 @@
         </div>
     </footer>
 
-    <script src="index.js"></script>
+    <script src="index.js" defer></script>
     <script>
         (function() {
             const track = document.getElementById('galleryTrack');

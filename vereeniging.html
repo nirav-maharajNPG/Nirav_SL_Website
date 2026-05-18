@@ -453,8 +453,8 @@
                             <div class="gallery-slide"><img src="assets/vereengingallery/_D3J5172.jpg" alt="Vereeniging Facility 14" loading="lazy"></div>
                             <div class="gallery-slide"><img src="assets/vereengingallery/_D3J5177.jpg" alt="Vereeniging Facility 15" loading="lazy"></div>
                         </div>
-                        <button class="gallery-btn prev" id="prevBtn"><i class="fas fa-chevron-left"></i></button>
-                        <button class="gallery-btn next" id="nextBtn"><i class="fas fa-chevron-right"></i></button>
+                        <button class="gallery-btn prev" id="prevBtn" aria-label="Previous image"><i class="fas fa-chevron-left"></i></button>
+                        <button class="gallery-btn next" id="nextBtn" aria-label="Next image"><i class="fas fa-chevron-right"></i></button>
                         <div class="gallery-counter" id="galleryCounter">1 / 15</div>
                     </div>
                 </div>
@@ -543,7 +543,7 @@
         </div>
     </footer>
 
-    <script src="index.js"></script>
+    <script src="index.js" defer></script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const track = document.getElementById('galleryTrack');

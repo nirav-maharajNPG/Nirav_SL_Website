@@ -94,8 +94,8 @@
                     <div class="hero-slide" style="background-image: url('assets/Storage Locker/Cover pics/Vereeniging1.jpg')"></div>
                 </div>
                 <div class="hero-arrows">
-                    <button class="hero-arrow prev" onclick="moveHero(-1)"><i class="fas fa-chevron-left"></i></button>
-                    <button class="hero-arrow next" onclick="moveHero(1)"><i class="fas fa-chevron-right"></i></button>
+                    <button class="hero-arrow prev" onclick="moveHero(-1)" aria-label="Previous slide"><i class="fas fa-chevron-left"></i></button>
+                    <button class="hero-arrow next" onclick="moveHero(1)" aria-label="Next slide"><i class="fas fa-chevron-right"></i></button>
                 </div>
             </div>
         </section>
@@ -211,8 +211,8 @@
                     <a href="locations.html" class="btn btn-primary">FIND STORAGE NEARBY</a>
                 </div>
                 <div class="feature-carousel-container" style="flex: 1;">
-                    <button class="feature-nav-btn prev" onclick="moveFeature(-1)"><i class="fas fa-chevron-left"></i></button>
-                    <button class="feature-nav-btn next" onclick="moveFeature(1)"><i class="fas fa-chevron-right"></i></button>
+                    <button class="feature-nav-btn prev" onclick="moveFeature(-1)" aria-label="Previous feature"><i class="fas fa-chevron-left"></i></button>
+                    <button class="feature-nav-btn next" onclick="moveFeature(1)" aria-label="Next feature"><i class="fas fa-chevron-right"></i></button>
                     <div class="feature-track" id="featureTrack">
                         <div class="feature-slide" style="position: relative;">
                             <img src="assets/Storage Locker/Cover pics/wynbergcover1.jpg" alt="Wynberg Storage Locker" style="object-position: center top;" loading="lazy">
@@ -299,7 +299,7 @@
         </div>
     </footer>
 
-    <script src="index.js"></script>
+    <script src="index.js" defer></script>
 
     <script>
         // Hero Carousel Logic

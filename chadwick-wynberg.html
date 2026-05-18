@@ -406,8 +406,8 @@
                             <div class="gallery-slide"><img src="assets/chadwick storage/366f2353-4848-4932-a8ac-050d62b6eb5a_primary.jpg" alt="Sandton Storage 1" loading="lazy"></div>
                             <div class="gallery-slide"><img src="assets/chadwick storage/7fcd7911-2ae9-458c-aaf3-fc54888e2783_primary.jpg" alt="Sandton Storage 2" loading="lazy"></div>
                         </div>
-                        <button class="gallery-btn prev" id="storagePrev" style="width: 50px; height: 50px; background: rgba(255,255,255,0.9); color: var(--black);"><i class="fas fa-chevron-left"></i></button>
-                        <button class="gallery-btn next" id="storageNext" style="width: 50px; height: 50px; background: rgba(255,255,255,0.9); color: var(--black);"><i class="fas fa-chevron-right"></i></button>
+                        <button class="gallery-btn prev" id="storagePrev" style="width: 50px; height: 50px; background: rgba(255,255,255,0.9); color: var(--black);" aria-label="Previous image"><i class="fas fa-chevron-left"></i></button>
+                        <button class="gallery-btn next" id="storageNext" style="width: 50px; height: 50px; background: rgba(255,255,255,0.9); color: var(--black);" aria-label="Next image"><i class="fas fa-chevron-right"></i></button>
                     </div>
                 </div>
             </div>
@@ -444,8 +444,8 @@
                             <div class="gallery-slide"><img src="assets/chadwick gallery/e6bcc3c6-7f2f-4849-956b-a6c021f334be_primary.jpg" alt="Wynberg Office 19" loading="lazy" loading="lazy"></div>
                             <div class="gallery-slide"><img src="assets/chadwick gallery/fdbf99d0-c128-4b29-99a7-5d96f414419c_primary.jpg" alt="Wynberg Office 20" loading="lazy" loading="lazy"></div>
                         </div>
-                        <button class="gallery-btn prev" id="prevBtn"><i class="fas fa-chevron-left"></i></button>
-                        <button class="gallery-btn next" id="nextBtn"><i class="fas fa-chevron-right"></i></button>
+                        <button class="gallery-btn prev" id="prevBtn" aria-label="Previous image"><i class="fas fa-chevron-left"></i></button>
+                        <button class="gallery-btn next" id="nextBtn" aria-label="Next image"><i class="fas fa-chevron-right"></i></button>
                         <div class="gallery-counter" id="galleryCounter">1 / 20</div>
                     </div>
                 </div>
@@ -538,7 +538,7 @@
         </div>
     </footer>
 
-    <script src="index.js"></script>
+    <script src="index.js" defer></script>
     <script>
         (function() {
             const track = document.getElementById('galleryTrack');

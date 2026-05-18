@@ -111,6 +111,15 @@ $replacements = @{
     "Gemini_Generated_Image_m2g25fm2g25fm2g2%20(1).png" = "Gemini_Generated_Image_m2g25fm2g25fm2g2%20(1).jpg"
     'type="image/png" href="assets/Storage Locker/storagelockerlogo.png"' = 'type="image/jpeg" href="assets/Storage Locker/storagelockerlogo.jpg"'
     "storagelockerlogo.png" = "storagelockerlogo.jpg"
+    '<script src="index.js"></script>' = '<script src="index.js" defer></script>'
+    '<button class="hero-arrow prev" onclick="moveHero(-1)">' = '<button class="hero-arrow prev" onclick="moveHero(-1)" aria-label="Previous slide">'
+    '<button class="hero-arrow next" onclick="moveHero(1)">' = '<button class="hero-arrow next" onclick="moveHero(1)" aria-label="Next slide">'
+    '<button class="feature-nav-btn prev" onclick="moveFeature(-1)">' = '<button class="feature-nav-btn prev" onclick="moveFeature(-1)" aria-label="Previous feature">'
+    '<button class="feature-nav-btn next" onclick="moveFeature(1)">' = '<button class="feature-nav-btn next" onclick="moveFeature(1)" aria-label="Next feature">'
+    '<button class="gallery-btn prev" id="prevBtn">' = '<button class="gallery-btn prev" id="prevBtn" aria-label="Previous image">'
+    '<button class="gallery-btn next" id="nextBtn">' = '<button class="gallery-btn next" id="nextBtn" aria-label="Next image">'
+    '<button class="gallery-btn prev" id="storagePrev" style="width: 50px; height: 50px; background: rgba(255,255,255,0.9); color: var(--black);">' = '<button class="gallery-btn prev" id="storagePrev" style="width: 50px; height: 50px; background: rgba(255,255,255,0.9); color: var(--black);" aria-label="Previous image">'
+    '<button class="gallery-btn next" id="storageNext" style="width: 50px; height: 50px; background: rgba(255,255,255,0.9); color: var(--black);">' = '<button class="gallery-btn next" id="storageNext" style="width: 50px; height: 50px; background: rgba(255,255,255,0.9); color: var(--black);" aria-label="Next image">'
 }
 
 foreach ($file in $htmlFiles) {
