@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -226,8 +226,8 @@
             },
             "Vereeniging": {
                 address: "Leeuwenhoek Street, Vereeniging",
-                phone: "016 422 8892",
-                phoneHref: "tel:+27164228892",
+                phone: "079 568 0869",
+                phoneHref: "tel:+27795680869",
                 whatsapp: "079 568 0869",
                 whatsappHref: "https://wa.me/27795680869",
                 email: "leeuwenhoekstreet@storagelocker.co.za",
@@ -276,8 +276,18 @@
             formLocationTitle.textContent = `Enquire for ${loc} Branch`;
             hiddenLocationInput.value = loc;
             branchAddress.textContent = branch.address;
-            branchPhoneLink.textContent = branch.phone;
-            branchPhoneLink.href = branch.phoneHref;
+
+            const gridEl = document.querySelector('.branch-details-grid');
+            if (branch.phone) {
+                branchPhoneLink.textContent = branch.phone;
+                branchPhoneLink.href = branch.phoneHref;
+                branchPhoneLink.closest('div').style.display = 'block';
+                if (gridEl) gridEl.style.gridTemplateColumns = 'repeat(4, 1fr)';
+            } else {
+                branchPhoneLink.closest('div').style.display = 'none';
+                if (gridEl) gridEl.style.gridTemplateColumns = 'repeat(3, 1fr)';
+            }
+
             branchWhatsappLink.textContent = branch.whatsapp;
             branchWhatsappLink.href = branch.whatsappHref;
             branchEmailLink.textContent = branch.email;
